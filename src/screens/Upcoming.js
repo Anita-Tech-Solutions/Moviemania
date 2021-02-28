@@ -1,10 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const Latest = () => {
+const Upcoming = () => {
   return (
     <View style={styles.container}>
-      <Text>Latest</Text>
+      <Text>Upcoming</Text>
     </View>
   );
 };
@@ -15,4 +15,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Latest;
+export default Upcoming;

@@ -1,4 +1,5 @@
-import Card from './Card'
+import Card from './Card';
+import MyTabBar from './Bottom';
+import Title from './Title';
 
-
-export {Card}
+export {Card, MyTabBar, Title};

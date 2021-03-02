@@ -54,13 +54,11 @@ function MyTabBar({state, descriptors, navigation}) {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{flex: 1}}>
-            <View style={{flexDirection: 'row'}}>
-              <Icon name={iconName[index]} type={iconType[index]} />
-              {isFocused && (
-                <Text style={{color: isFocused ? 'red' : '#222'}}>{label}</Text>
-              )}
-            </View>
+            style={{flex: 1, flexDirection: 'row'}}>
+            <Icon name={iconName[index]} type={iconType[index]} />
+            {isFocused && (
+              <Text style={{color: isFocused ? 'red' : '#222'}}>{label}</Text>
+            )}
           </TouchableOpacity>
         );
       })}

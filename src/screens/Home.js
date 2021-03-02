@@ -81,6 +81,7 @@ const Home = ({
           data={trending}
           horizontal
           showsHorizontalScrollIndicator={false}
+          keyExtractor={(_, index) => index.toString()}
           scrollEnabled
           renderItem={({item, index}) => {
             return <Card item={item} navigation={navigation} key={index} />;
@@ -94,6 +95,7 @@ const Home = ({
           horizontal
           showsHorizontalScrollIndicator={false}
           scrollEnabled
+          keyExtractor={(_, index) => index.toString()}
           renderItem={({item, index}) => {
             return <Card item={item} navigation={navigation} key={index} />;
           }}
@@ -106,6 +108,7 @@ const Home = ({
           horizontal
           showsHorizontalScrollIndicator={false}
           scrollEnabled
+          keyExtractor={(_, index) => index.toString()}
           renderItem={({item, index}) => {
             return <Card item={item} navigation={navigation} key={index} />;
           }}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
 
 function MyTabBar({state, descriptors, navigation}) {
@@ -10,7 +10,7 @@ function MyTabBar({state, descriptors, navigation}) {
   }
 
   return (
-    <View style={{flexDirection: 'row'}}>
+    <View style={styles.container}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
@@ -67,5 +67,14 @@ function MyTabBar({state, descriptors, navigation}) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default MyTabBar;

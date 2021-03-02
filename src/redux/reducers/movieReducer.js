@@ -1,4 +1,6 @@
 import {
+  FETCH_DETAIL,
+  FETCH_DISCOVER,
   FETCH_MOVIE,
   FETCH_TOPRATED,
   FETCH_TRENDING,
@@ -12,6 +14,8 @@ const initial_state = {
   trending: [],
   upcoming: [],
   top_rated: [],
+  discover: [],
+  detail: {title: '', description: ''},
 };
 
 export default (state = initial_state, action) => {
@@ -24,6 +28,10 @@ export default (state = initial_state, action) => {
       return {...state, upcoming: action.payload, loading: false};
     case FETCH_TOPRATED:
       return {...state, top_rated: action.payload, loading: false};
+    case FETCH_DISCOVER:
+      return {...state, discover: action.payload, loading: false};
+    case FETCH_DETAIL:
+      return {...state, detail: action.payload, loading: false};
     default:
       return state;
   }

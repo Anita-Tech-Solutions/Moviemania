@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
 
 function MyTabBar({state, descriptors, navigation}) {
@@ -16,13 +16,6 @@ function MyTabBar({state, descriptors, navigation}) {
 
         const iconName = ['home', 'compass', 'tv', 'settings'];
         const iconType = ['antdesign', 'feather', 'feather', 'feather'];
-
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
 
         const isFocused = state.index === index;
 
@@ -47,18 +40,19 @@ function MyTabBar({state, descriptors, navigation}) {
 
         return (
           <TouchableOpacity
-            key={index.toString()}
+            key={index}
             accessibilityRole="button"
             accessibilityState={isFocused ? {selected: true} : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{flex: 1, flexDirection: 'row'}}>
-            <Icon name={iconName[index]} type={iconType[index]} />
-            {isFocused && (
-              <Text style={{color: isFocused ? 'red' : '#222'}}>{label}</Text>
-            )}
+            style={{flex: 1}}>
+            <Icon
+              name={iconName[index]}
+              type={iconType[index]}
+              color={isFocused ? 'red' : 'black'}
+            />
           </TouchableOpacity>
         );
       })}

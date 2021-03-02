@@ -5,15 +5,12 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   View,
-  Image,
 } from 'react-native';
 import {Button, Icon, Input} from 'react-native-elements';
 
 //redux
 import {connect} from 'react-redux';
-import {poster} from '../constants';
 import {
   fetchTrending,
   fetchUpcoming,
@@ -30,7 +27,6 @@ const Home = ({
   trending,
   upcoming,
   top_rated,
-  loading,
   fetchTrending,
   fetchUpcoming,
   fetchToprated,
@@ -39,14 +35,7 @@ const Home = ({
     fetchTrending();
     fetchUpcoming();
     fetchToprated();
-  }, [
-    trending,
-    upcoming,
-    top_rated,
-    fetchTrending,
-    fetchUpcoming,
-    fetchToprated,
-  ]);
+  }, []);
 
   return (
     <ScrollView>

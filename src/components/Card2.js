@@ -25,7 +25,7 @@ const Card2 = ({item, navigation}) => {
 
   return (
     <TouchableWithoutFeedback
-      onPress={() => navigation.navigate('Detail', {id})}>
+      onPress={() => navigation.navigate('Detail', {id, vote_count})}>
       <View style={styles.container}>
         <View>
           <Image

@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
-import {Dimensions, Image, Text, View} from 'react-native';
+import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import {Icon} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {poster} from '../constants';
 
@@ -8,7 +9,7 @@ import {fetchDetail} from '../redux/actions/movieAction';
 const {width} = Dimensions.get('window');
 
 const MovieDetail = ({route, detail, fetchDetail}) => {
-  const {id} = route.params;
+  const {id, vote_count} = route.params;
   useEffect(() => {
     fetchDetail({id});
   }, []);
@@ -27,11 +28,30 @@ const MovieDetail = ({route, detail, fetchDetail}) => {
           borderBottomRightRadius: 15,
         }}
       />
-      <Text>Movie introduction</Text>
-      <Text>{overview}</Text>
+      <View style={styles.section}>
+        <Text style={{fontSize: 25}}>{title}</Text>
+        <View style={styles.section}>
+          <Icon name="fire" type="fontisto" color="orange" />
+          <Text>Attention</Text>
+          <Text>{vote_count}</Text>
+        </View>
+      </View>
+      <View>
+        <Text>Movie introduction</Text>
+        <Text>{overview}</Text>
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  section: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: 10,
+  },
+});
 
 const mapStateToProps = (state) => ({
   detail: state.movie.detail,

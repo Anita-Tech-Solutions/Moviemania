@@ -1,6 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Dimensions, View} from 'react-native';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+
+const {width} = Dimensions.get('window');
 
 const Loading = () => {
   return (

@@ -17,6 +17,8 @@ import MovieDetail from '../screens/MovieDetail';
 
 const Stack = createStackNavigator();
 
+import Genre from '../screens/genre/Genre';
+
 function HomeStack() {
   return (
     <Stack.Navigator headerMode="none">
@@ -29,7 +31,7 @@ function HomeStack() {
 function DiscoverStack() {
   return (
     <Stack.Navigator headerMode="none">
-      <Stack.Screen name="Discover" component={Discover} />
+      <Stack.Screen name="Discover" component={Genre} />
       <Stack.Screen name="Detail" component={MovieDetail} />
     </Stack.Navigator>
   );

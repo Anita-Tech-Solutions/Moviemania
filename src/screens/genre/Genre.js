@@ -11,7 +11,9 @@ const Top = createMaterialTopTabNavigator();
 
 const Genre = () => {
   return (
-    <Top.Navigator swipeEnabled>
+    <Top.Navigator
+      swipeEnabled
+      tabBarOptions={{allowFontScaling: true, scrollEnabled: true}}>
       <Top.Screen name="All" component={All} />
       <Top.Screen name="Action" component={Action} />
       <Top.Screen name="Drama" component={Drama} />

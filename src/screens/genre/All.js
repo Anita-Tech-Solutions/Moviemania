@@ -1,12 +1,35 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {FlatList, Text, View} from 'react-native';
+import {connect} from 'react-redux';
+import {Card2, Loading} from '../../components';
 
-const All = () => {
+import {fetchDiscover} from '../../redux/actions/movieAction';
+
+const All = ({discover, loading, fetchDiscover, navigation}) => {
+  useEffect(() => {
+    fetchDiscover();
+  }, []);
+
   return (
     <View>
-      <Text>All</Text>
+      {loading ? (
+        <Loading />
+      ) : (
+        <FlatList
+          data={discover}
+          renderItem={({item, index}) => {
+            return <Card2 item={item} key={index} navigation={navigation} />;
+          }}
+          keyExtractor={(_, index) => index.toString()}
+        />
+      )}
     </View>
   );
 };
 
-export default All;
+const mapStateToProps = (state) => ({
+  discover: state.movie.discover,
+  loading: state.movie.loading,
+});
+
+export default connect(mapStateToProps, {fetchDiscover})(All);

@@ -1,4 +1,5 @@
 import {
+  FETCH_ACTION,
   FETCH_DETAIL,
   FETCH_DISCOVER,
   FETCH_MOVIE,
@@ -15,6 +16,7 @@ const initial_state = {
   upcoming: [],
   top_rated: [],
   discover: [],
+  actiondata: [],
   detail: {title: '', description: ''},
 };
 
@@ -30,6 +32,8 @@ export default (state = initial_state, action) => {
       return {...state, top_rated: action.payload, loading: false};
     case FETCH_DISCOVER:
       return {...state, discover: action.payload, loading: false};
+    case FETCH_ACTION:
+      return {...state, actiondata: action.payload, loading: false};
     case FETCH_DETAIL:
       return {...state, detail: action.payload, loading: false};
     default:

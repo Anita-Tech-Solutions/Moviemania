@@ -1,4 +1,5 @@
 import {
+  FETCH_ACTION,
   FETCH_DETAIL,
   FETCH_DISCOVER,
   FETCH_TOPRATED,
@@ -44,6 +45,19 @@ export const fetchDiscover = () => async (dispatch) => {
     dispatch({type: LOADING});
     const response = await moviemania.get('discover/movie');
     dispatch({type: FETCH_DISCOVER, payload: response.data.results});
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const fetchAction = () => async (dispatch) => {
+  try {
+    const response = await moviemania.get('discover/movie', {
+      with_genres: 28,
+    });
+    console.log('hi');
+
+    dispatch({type: FETCH_ACTION, payload: response.data.results});
   } catch (e) {
     console.log(e);
   }

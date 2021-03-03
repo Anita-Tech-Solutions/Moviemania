@@ -8,4 +8,5 @@ export const FETCH_TRENDING = 'fetch_trending';
 export const FETCH_UPCOMING = 'fetch_upcoming';
 export const FETCH_TOPRATED = 'fetch_toprated';
 export const FETCH_DISCOVER = 'fetch_discover';
+export const FETCH_ACTION = 'fetch_action';
 export const FETCH_DETAIL = 'fetch_detail';

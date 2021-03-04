@@ -1,12 +1,32 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {FlatList, View} from 'react-native';
+import {connect} from 'react-redux';
+import {Card2} from '../../components';
 
-const Love = () => {
+import {fetchLove} from '../../redux/actions/movieAction';
+
+const Love = ({love, fetchLove, navigation}) => {
+  const [] = useState(true);
+
+  useEffect(() => {
+    fetchLove();
+  }, []);
+
   return (
     <View>
-      <Text>Love</Text>
+      <FlatList
+        data={love}
+        renderItem={({item, index}) => {
+          return <Card2 item={item} key={index} navigation={navigation} />;
+        }}
+        keyExtractor={(_, index) => index.toString()}
+      />
     </View>
   );
 };
 
-export default Love;
+const mapStateToProps = (state) => ({
+  love: state.movie.love,
+});
+
+export default connect(mapStateToProps, {fetchLove})(Love);

@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native';
-
+import FastImage from 'react-native-fast-image';
 import {poster} from '../constants';
 
 const Card = ({item, navigation}) => {
   return (
     <View style={styles.container}>
-      <Image
+      <FastImage
         source={{uri: poster + item.poster_path}}
         resizeMode="cover"
         style={styles.image}

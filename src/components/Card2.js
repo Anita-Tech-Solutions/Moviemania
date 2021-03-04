@@ -3,6 +3,8 @@ import {StyleSheet, View, Text, Image, Dimensions} from 'react-native';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {poster} from '../constants';
 
+import FastImage from 'react-native-fast-image';
+
 const {width} = Dimensions.get('window');
 
 const Card2 = ({item, navigation}) => {
@@ -28,7 +30,7 @@ const Card2 = ({item, navigation}) => {
       onPress={() => navigation.navigate('Detail', {id, vote_count})}>
       <View style={styles.container}>
         <View>
-          <Image
+          <FastImage
             source={{uri: poster + poster_path}}
             resizeMode="center"
             style={{width: 150, height: 200, borderRadius: 10}}

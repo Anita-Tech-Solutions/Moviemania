@@ -5,32 +5,30 @@ import {Card2, Loading} from '../../components';
 
 import {fetchDiscover} from '../../redux/actions/movieAction';
 
-const All = ({discover, loading, fetchDiscover, navigation}) => {
+const All = ({discover, fetchDiscover, navigation}) => {
   const [offset, setOffset] = useState(1);
   const [data, setData] = useState([]);
+
   useEffect(() => {
     fetchDiscover(offset);
-    setData(discover);
   }, []);
 
   const getData = () => {
     setOffset(offset + 1);
     fetchDiscover(offset + 1);
-    setData([...data, ...discover]);
   };
-
+  console.log(discover.length);
   return (
     <View style={styles.container}>
-      {data.length === 0 && <Loading />}
       <FlatList
-        data={data}
+        data={discover}
         renderItem={({item, index}) => {
           return <Card2 item={item} key={index} navigation={navigation} />;
         }}
         keyExtractor={(_, index) => index.toString()}
         onEndReached={getData}
         onEndReachedThreshold={0.5}
-        ListFooterComponent={loading && <Loading />}
+        ListFooterComponent={discover && <Loading />}
       />
     </View>
   );

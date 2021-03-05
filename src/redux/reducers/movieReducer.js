@@ -43,8 +43,8 @@ export default (state = initial_state, action) => {
     case FETCH_DISCOVER:
       return {
         ...state,
-        discover: action.payload,
         loading: false,
+        discover: [...state.discover, ...action.payload],
       };
     case FETCH_ACTION:
       return {...state, actiondata: action.payload, loading: false};

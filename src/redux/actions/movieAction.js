@@ -68,10 +68,15 @@ export const fetchDiscover = (offset) =>
           page: offset,
         },
       });
-      dispatch({
-        type: FETCH_DISCOVER,
-        payload: response.data.results,
-      });
+
+      if (response.data.results.length > 0) {
+        dispatch({
+          type: FETCH_DISCOVER,
+          payload: response.data.results,
+        });
+      } else {
+        dispatch({type: LOADING});
+      }
     } catch (e) {
       console.log(e);
     }

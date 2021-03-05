@@ -82,57 +82,89 @@ export const fetchDiscover = (offset) =>
     }
   });
 
-export const fetchAction = () =>
+export const fetchAction = (offset) =>
   _.memoize(async (dispatch) => {
     try {
       const response = await moviemania.get('discover/movie', {
         params: {
           with_genres: 28,
+          page: offset,
         },
       });
-      dispatch({type: FETCH_ACTION, payload: response.data.results});
+      if (response.data.results.length > 0) {
+        dispatch({
+          type: FETCH_ACTION,
+          payload: response.data.results,
+        });
+      } else {
+        dispatch({type: LOADING});
+      }
     } catch (e) {
       console.log(e);
     }
   });
 
-export const fetchDrama = () =>
+export const fetchDrama = (offset) =>
   _.memoize(async (dispatch) => {
     try {
       const response = await moviemania.get('discover/movie', {
         params: {
           with_genres: 18,
+          page: offset,
         },
       });
-      dispatch({type: FETCH_DRAMA, payload: response.data.results});
+      if (response.data.results.length > 0) {
+        dispatch({
+          type: FETCH_DRAMA,
+          payload: response.data.results,
+        });
+      } else {
+        dispatch({type: LOADING});
+      }
     } catch (e) {
       console.log(e);
     }
   });
 
-export const fetchComedy = () =>
+export const fetchComedy = (offset) =>
   _.memoize(async (dispatch) => {
     try {
       const response = await moviemania.get('discover/movie', {
         params: {
           with_genres: 35,
+          page: offset,
         },
       });
-      dispatch({type: FETCH_COMEDY, payload: response.data.results});
+      if (response.data.results.length > 0) {
+        dispatch({
+          type: FETCH_COMEDY,
+          payload: response.data.results,
+        });
+      } else {
+        dispatch({type: LOADING});
+      }
     } catch (e) {
       console.log(e);
     }
   });
 
-export const fetchLove = () =>
+export const fetchLove = (offset) =>
   _.memoize(async (dispatch) => {
     try {
       const response = await moviemania.get('discover/movie', {
         params: {
           with_genres: 10749,
+          page: offset,
         },
       });
-      dispatch({type: FETCH_LOVE, payload: response.data.results});
+      if (response.data.results.length > 0) {
+        dispatch({
+          type: FETCH_LOVE,
+          payload: response.data.results,
+        });
+      } else {
+        dispatch({type: LOADING});
+      }
     } catch (e) {
       console.log(e);
     }

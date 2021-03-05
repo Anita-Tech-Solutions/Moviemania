@@ -47,13 +47,29 @@ export default (state = initial_state, action) => {
         discover: [...state.discover, ...action.payload],
       };
     case FETCH_ACTION:
-      return {...state, actiondata: action.payload, loading: false};
+      return {
+        ...state,
+        actiondata: [...state.actiondata, ...action.payload],
+        loading: false,
+      };
     case FETCH_DRAMA:
-      return {...state, drama: action.payload};
+      return {
+        ...state,
+        drama: [...state.drama, ...action.payload],
+        loading: false,
+      };
     case FETCH_COMEDY:
-      return {...state, comedy: action.payload};
+      return {
+        ...state,
+        comedy: [...state.comedy, ...action.payload],
+        loading: false,
+      };
     case FETCH_LOVE:
-      return {...state, love: action.payload};
+      return {
+        ...state,
+        love: [...state.love, ...action.payload],
+        loading: false,
+      };
     case FETCH_DETAIL:
       return {...state, detail: action.payload, loading: false};
     default:

@@ -1,16 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {FlatList, View} from 'react-native';
 import {connect} from 'react-redux';
-import {Card2} from '../../components';
+import {Card2, Loading} from '../../components';
 
 import {fetchDrama} from '../../redux/actions/movieAction';
 
 const Drama = ({drama, fetchDrama, navigation}) => {
-  const [] = useState(true);
+  const [offset, setOffset] = useState(1);
 
   useEffect(() => {
     fetchDrama();
   }, []);
+
+  const getData = () => {
+    setOffset(offset + 1);
+    fetchDrama(offset + 1);
+  };
 
   return (
     <View>
@@ -20,6 +25,9 @@ const Drama = ({drama, fetchDrama, navigation}) => {
           return <Card2 item={item} key={index} navigation={navigation} />;
         }}
         keyExtractor={(_, index) => index.toString()}
+        onEndReached={getData}
+        onEndReachedThreshold={0.5}
+        ListFooterComponent={drama && <Loading />}
       />
     </View>
   );
@@ -29,4 +37,4 @@ const mapStateToProps = (state) => ({
   drama: state.movie.drama,
 });
 
-export default connect(mapStateToProps, {fetchDrama})(Drama);
+export default connect(mapStateToProps, {fetchDrama})(memo(Drama));

@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {poster} from '../constants';
 
+import FastImage from 'react-native-fast-image';
 import {fetchDetail} from '../redux/actions/movieAction';
 
 const {width} = Dimensions.get('window');
@@ -18,7 +19,7 @@ const MovieDetail = ({route, detail, fetchDetail}) => {
 
   return (
     <View>
-      <Image
+      <FastImage
         source={{uri: poster + backdrop_path}}
         resizeMode="contain"
         style={{

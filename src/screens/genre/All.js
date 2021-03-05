@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {connect} from 'react-redux';
 import {Card2, Loading} from '../../components';
@@ -7,7 +7,6 @@ import {fetchDiscover} from '../../redux/actions/movieAction';
 
 const All = ({discover, fetchDiscover, navigation}) => {
   const [offset, setOffset] = useState(1);
-  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetchDiscover(offset);
@@ -17,7 +16,7 @@ const All = ({discover, fetchDiscover, navigation}) => {
     setOffset(offset + 1);
     fetchDiscover(offset + 1);
   };
-  console.log(discover.length);
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -45,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(mapStateToProps, {fetchDiscover})(All);
+export default connect(mapStateToProps, {fetchDiscover})(memo(All));

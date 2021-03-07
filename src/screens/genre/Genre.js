@@ -37,7 +37,11 @@ const Genre = ({fetchMovielist}) => {
               alignItems: 'center',
             }}>
             <Icon name="search" type="evilicon" />
-            <TextInput placeholder="Search" />
+            <TextInput
+              placeholder="Search"
+              style={{width: '90%'}}
+              onFocus={() => navigation.navigate('Search')}
+            />
           </View>
           <Button
             title="+33"

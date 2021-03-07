@@ -1,13 +1,38 @@
-import React from 'react';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, TouchableOpacity, StyleSheet, Keyboard} from 'react-native';
 import {Icon} from 'react-native-elements';
+import {BottomTabBar} from '@react-navigation/bottom-tabs';
 
 function MyTabBar({state, descriptors, navigation}) {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    let keyboardEventListeners;
+    if (Platform.OS === 'android') {
+      keyboardEventListeners = [
+        Keyboard.addListener('keyboardDidShow', () => setVisible(false)),
+        Keyboard.addListener('keyboardDidHide', () => setVisible(true)),
+      ];
+    }
+    return () => {
+      if (Platform.OS === 'android') {
+        keyboardEventListeners &&
+          keyboardEventListeners.forEach((eventListener) =>
+            eventListener.remove(),
+          );
+      }
+    };
+  }, []);
+
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
   if (focusedOptions.tabBarVisible === false) {
     return null;
   }
+  if (Platform.OS === 'ios') {
+    return <BottomTabBar />;
+  }
+  if (!visible) return null;
 
   return (
     <View style={styles.container}>

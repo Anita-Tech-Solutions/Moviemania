@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
+  TextInput,
 } from 'react-native';
 import {Button, Icon, Input} from 'react-native-elements';
 
@@ -45,18 +46,21 @@ const Home = ({
           <Text style={{fontWeight: 'bold'}}>forward to seeing ?</Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-          <Input
-            containerStyle={{
-              borderBottomColor: 'white',
-              borderBottomWidth: 0,
+          <View
+            style={{
               borderRadius: 10,
               width: width * 0.7,
               backgroundColor: '#f2f2f2',
-            }}
-            style={{width: 100}}
-            placeholder="Search"
-            leftIcon={<Icon name="search" type="evilicon" />}
-          />
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Icon name="search" type="evilicon" />
+            <TextInput
+              placeholder="Search"
+              style={{width: '90%'}}
+              onFocus={() => navigation.navigate('Search')}
+            />
+          </View>
           <Button
             title="+33"
             buttonStyle={{backgroundColor: 'red'}}
@@ -65,7 +69,7 @@ const Home = ({
         </View>
 
         {/*Trending*/}
-        <Title>Trending</Title>
+        <Title navigation={navigation}>Trending</Title>
         <FlatList
           data={trending}
           horizontal
@@ -78,7 +82,7 @@ const Home = ({
         />
 
         {/*Upcoming*/}
-        <Title>Upcoming</Title>
+        <Title navigation={navigation}>Upcoming</Title>
         <FlatList
           data={upcoming}
           horizontal
@@ -91,7 +95,7 @@ const Home = ({
         />
 
         {/**Top Rated */}
-        <Title>Top Rated</Title>
+        <Title navigation={navigation}>Top Rated</Title>
         <FlatList
           data={top_rated}
           horizontal

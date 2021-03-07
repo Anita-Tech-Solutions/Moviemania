@@ -11,6 +11,7 @@ import {
   FETCH_TRENDING,
   FETCH_UPCOMING,
   LOADING,
+  SEARCH_MOVIE,
 } from './types';
 
 import moviemania from '../../api';
@@ -170,11 +171,15 @@ export const fetchLove = (offset) =>
     }
   });
 
-export const fetchDetail = ({id}) =>
+export const searchMovie = (query) =>
   _.memoize(async (dispatch) => {
     try {
-      const response = await moviemania.get(`movie/${id}`);
-      dispatch({type: FETCH_DETAIL, payload: response.data});
+      const response = await moviemania.get('search/movie', {
+        params: {
+          query,
+        },
+      });
+      dispatch({type: SEARCH_MOVIE, payload: response.data.results});
     } catch (e) {
       console.log(e);
     }

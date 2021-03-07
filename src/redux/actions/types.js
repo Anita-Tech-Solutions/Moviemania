@@ -13,4 +13,13 @@ export const FETCH_ACTION = 'fetch_action';
 export const FETCH_DRAMA = 'fetch_drama';
 export const FETCH_COMEDY = 'fetch_comedy';
 export const FETCH_LOVE = 'fetch_love';
+
+export const SEARCH_MOVIE = 'search_movie';
+
+//movie detail
 export const FETCH_DETAIL = 'fetch_detail';
+export const FETCH_CAST = 'fetch_cast';
+export const FETCH_WATCH_PROVIDER = 'fetch_watch_provider';
+export const FETCH_LISTS = 'fetch_lists';
+export const FETCH_IMAGES = 'fetch_images';
+export const FETCH_RECOMMEND = 'fetch_recommend';

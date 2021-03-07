@@ -30,11 +30,29 @@ const Card2 = ({item, navigation}) => {
       onPress={() => navigation.navigate('Detail', {id, vote_count})}>
       <View style={styles.container}>
         <View>
-          <FastImage
-            source={{uri: poster + poster_path}}
-            resizeMode="center"
-            style={{width: 150, height: 200, borderRadius: 10}}
-          />
+          {poster_path === null ? (
+            <FastImage
+              source={require('../assets/images/alt.png')}
+              resizeMode="center"
+              style={{
+                width: 150,
+                height: 200,
+                borderRadius: 10,
+                backgroundColor: '#66ccff',
+              }}
+            />
+          ) : (
+            <FastImage
+              source={{uri: poster + poster_path}}
+              resizeMode="cover"
+              style={{
+                width: 150,
+                height: 200,
+                borderRadius: 10,
+                backgroundColor: '#66ccff',
+              }}
+            />
+          )}
         </View>
         <View style={{width: width * 0.5, marginLeft: 10}}>
           <Text style={{fontSize: 16, fontWeight: '800'}}>{title}</Text>

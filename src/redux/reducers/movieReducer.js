@@ -11,6 +11,7 @@ import {
   FETCH_TRENDING,
   FETCH_UPCOMING,
   LOADING,
+  SEARCH_MOVIE,
 } from '../actions/types';
 
 const initial_state = {
@@ -25,7 +26,7 @@ const initial_state = {
   drama: [],
   comedy: [],
   love: [],
-  detail: {title: '', description: ''},
+  search: [],
 };
 
 export default (state = initial_state, action) => {
@@ -70,8 +71,9 @@ export default (state = initial_state, action) => {
         love: [...state.love, ...action.payload],
         loading: false,
       };
-    case FETCH_DETAIL:
-      return {...state, detail: action.payload, loading: false};
+
+    case SEARCH_MOVIE:
+      return {...state, search: action.payload};
     default:
       return state;
   }

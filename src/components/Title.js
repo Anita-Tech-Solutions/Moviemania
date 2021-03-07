@@ -1,11 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Title = ({children, navigation}) => {
   return (
     <View style={styles.container}>
       <Text>{children}</Text>
-      <Text>See All</Text>
+      <TouchableOpacity onPress={() => navigation.navigate(children)}>
+        <Text>See All</Text>
+      </TouchableOpacity>
     </View>
   );
 };

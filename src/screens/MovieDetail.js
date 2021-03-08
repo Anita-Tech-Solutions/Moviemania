@@ -131,6 +131,7 @@ const MovieDetail = ({
         <Text style={{fontSize: 20, fontWeight: '800'}}>Recommendation</Text>
         <FlatList
           horizontal
+          keyExtractor={(_, index) => index.toString()}
           data={recommend}
           renderItem={({item, index}) => (
             <Card item={item} key={index} navigation={navigation} />

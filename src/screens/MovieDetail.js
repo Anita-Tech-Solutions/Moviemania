@@ -104,6 +104,9 @@ const MovieDetail = ({
         showsHorizontalScrollIndicator={false}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({item, index}) => {
+          if (!item.profile_path) {
+            return;
+          }
           return (
             // <FastImage
             //   source={{uri: poster + item.profile_path}}

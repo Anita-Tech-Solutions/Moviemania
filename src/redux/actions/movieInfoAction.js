@@ -1,5 +1,11 @@
 import _ from 'lodash';
-import {FETCH_CAST, FETCH_DETAIL, FETCH_IMAGES, FETCH_RECOMMEND} from './types';
+import {
+  FETCH_CAST,
+  FETCH_COMMENTS,
+  FETCH_DETAIL,
+  FETCH_IMAGES,
+  FETCH_RECOMMEND,
+} from './types';
 
 import moviemania from '../../api';
 
@@ -43,4 +49,14 @@ const fetchRecommend = (id) =>
     }
   });
 
-export {fetchDetail, fetchCast, fetchImages,fetchRecommend};
+const fetchComments = (id) =>
+  _.memoize(async (dispatch) => {
+    try {
+      const response = await moviemania.get(`movie/${id}/reviews`);
+      dispatch({type: FETCH_COMMENTS, payload: response.data.results});
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+export {fetchDetail, fetchCast, fetchImages, fetchRecommend, fetchComments};

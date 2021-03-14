@@ -7,16 +7,19 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
+
 import {Avatar, Icon} from 'react-native-elements';
 import {connect} from 'react-redux';
-import {poster} from '../constants';
-import {Card, Loading} from '../components';
+import {poster, theme} from '../constants';
+import {Card, Card3, Loading} from '../components';
 import FastImage from 'react-native-fast-image';
+
 import {
   fetchCast,
   fetchDetail,
   fetchImages,
   fetchRecommend,
+  fetchComments,
 } from '../redux/actions/movieInfoAction';
 
 const {width} = Dimensions.get('window');
@@ -28,9 +31,11 @@ const MovieDetail = ({
   cast,
   images,
   recommend,
+  comments,
   fetchDetail,
   fetchCast,
   fetchRecommend,
+  fetchComments,
 }) => {
   const {id, vote_count} = route.params;
   useEffect(() => {
@@ -38,6 +43,7 @@ const MovieDetail = ({
     fetchCast(id);
     fetchImages(id);
     fetchRecommend(id);
+    fetchComments(id);
   }, []);
 
   const {title, backdrop_path, overview, genres} = detail;
@@ -66,7 +72,7 @@ const MovieDetail = ({
           <Text>{vote_count}</Text>
         </View>
       </View>
-      <ScrollView horizontal>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {genres.map(({name}, index) => (
           <View
             key={index}
@@ -108,17 +114,16 @@ const MovieDetail = ({
             return;
           }
           return (
-            // <FastImage
-            //   source={{uri: poster + item.profile_path}}
-            //   style={{width: 100, height: 150}}
-            //   resizeMode="contain"
-            // />
             <Avatar
               size={100}
               source={{uri: poster + item.profile_path}}
-              containerStyle={{margin: 10}}
+              containerStyle={{margin: 5}}
               ImageComponent={FastImage}
-              imageProps={{resizeMode: 'center'}}
+              avatarStyle={{
+                width: '100%',
+                borderRadius: 10,
+              }}
+              imageProps={{resizeMode: 'cover'}}
             />
           );
         }}
@@ -141,6 +146,16 @@ const MovieDetail = ({
           )}
         />
       </View>
+      <View>
+        <Text>Comments</Text>
+        <FlatList
+          data={comments}
+          renderItem={({item, index}) => {
+            return <Card3 item={item} key={index} />;
+          }}
+          keyExtractor={(_, index) => index.toString()}
+        />
+      </View>
     </ScrollView>
   );
 };
@@ -154,7 +169,6 @@ const styles = StyleSheet.create({
   },
   backgroundVideo: {
     position: 'absolute',
-
     top: 100,
     left: 100,
     right: 0,
@@ -167,6 +181,7 @@ const mapStateToProps = (state) => ({
   cast: state.detail.cast,
   images: state.detail.images,
   recommend: state.detail.recommend,
+  comments: state.detail.comments,
 });
 
 export default connect(mapStateToProps, {
@@ -174,4 +189,5 @@ export default connect(mapStateToProps, {
   fetchCast,
   fetchImages,
   fetchRecommend,
+  fetchComments,
 })(MovieDetail);

@@ -1,6 +1,8 @@
 import React from 'react';
-import {StyleSheet, View, Text, TextInput} from 'react-native';
-import {Icon} from 'react-native-elements';
+import {StyleSheet, View, Text, TextInput, Dimensions} from 'react-native';
+import {Icon, Button} from 'react-native-elements';
+
+const {width} = Dimensions.get('window');
 
 const Header = ({navigation}) => {
   return (
@@ -37,7 +39,6 @@ const Header = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: 'white',
   },
 });

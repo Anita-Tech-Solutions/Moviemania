@@ -12,44 +12,18 @@ import {fetchMovielist} from '../../redux/actions/movieAction';
 import {Dimensions, Text, View, StyleSheet, TextInput} from 'react-native';
 
 import {Button, Icon} from 'react-native-elements';
+import {Header} from '../../components';
 
 const Top = createMaterialTopTabNavigator();
 const {width} = Dimensions.get('window');
 
-const Genre = ({fetchMovielist}) => {
+const Genre = ({fetchMovielist, navigation}) => {
   useEffect(() => {
     fetchMovielist();
   }, []);
   return (
     <>
-      <View style={styles.container}>
-        <View style={{margin: 10}}>
-          <Text>What movie are you looking</Text>
-          <Text style={{fontWeight: 'bold'}}>forward to seeing ?</Text>
-        </View>
-        <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-          <View
-            style={{
-              borderRadius: 10,
-              width: width * 0.7,
-              backgroundColor: '#f2f2f2',
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <Icon name="search" type="evilicon" />
-            <TextInput
-              placeholder="Search"
-              style={{width: '90%'}}
-              onFocus={() => navigation.navigate('Search')}
-            />
-          </View>
-          <Button
-            title="+33"
-            buttonStyle={{backgroundColor: 'red'}}
-            titleStyle={{color: 'white'}}
-          />
-        </View>
-      </View>
+      <Header navigation={navigation} />
       <Top.Navigator
         swipeEnabled
         tabBarOptions={{

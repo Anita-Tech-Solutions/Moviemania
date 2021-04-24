@@ -33,7 +33,7 @@ const Card2 = ({item, navigation}) => {
           {poster_path === null ? (
             <FastImage
               source={require('../assets/images/alt.png')}
-              resizeMode="center"
+              resizeMode="contain"
               style={{
                 width: 150,
                 height: 200,

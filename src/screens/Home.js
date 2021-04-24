@@ -1,14 +1,5 @@
 import React, {useEffect} from 'react';
-import {
-  Dimensions,
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-} from 'react-native';
-import {Button, Icon, Input} from 'react-native-elements';
+import {Dimensions, FlatList, ScrollView} from 'react-native';
 
 //redux
 import {connect} from 'react-redux';
@@ -22,6 +13,7 @@ import {Header, Title} from '../components';
 const {width} = Dimensions.get('window');
 
 import {Card} from '../components';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Home = ({
   navigation,
@@ -39,56 +31,51 @@ const Home = ({
   }, []);
 
   return (
-    <ScrollView style={{flex: 1}}>
-      <Header navigation={navigation} />
-      {/*Trending*/}
-      <Title navigation={navigation}>Trending</Title>
-      <FlatList
-        data={trending}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(_, index) => index.toString()}
-        scrollEnabled
-        renderItem={({item, index}) => {
-          return <Card item={item} navigation={navigation} key={index} />;
-        }}
-      />
+    <SafeAreaView style={{flex: 1}}>
+      <ScrollView style={{flex: 1}}>
+        <Header navigation={navigation} />
+        {/*Trending*/}
+        <Title navigation={navigation}>Trending</Title>
+        <FlatList
+          data={trending}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(_, index) => index.toString()}
+          scrollEnabled
+          renderItem={({item, index}) => {
+            return <Card item={item} navigation={navigation} key={index} />;
+          }}
+        />
 
-      {/*Upcoming*/}
-      <Title navigation={navigation}>Upcoming</Title>
-      <FlatList
-        data={upcoming}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        scrollEnabled
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({item, index}) => {
-          return <Card item={item} navigation={navigation} key={index} />;
-        }}
-      />
+        {/*Upcoming*/}
+        <Title navigation={navigation}>Upcoming</Title>
+        <FlatList
+          data={upcoming}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          scrollEnabled
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={({item, index}) => {
+            return <Card item={item} navigation={navigation} key={index} />;
+          }}
+        />
 
-      {/**Top Rated */}
-      <Title navigation={navigation}>Top Rated</Title>
-      <FlatList
-        data={top_rated}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        scrollEnabled
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({item, index}) => {
-          return <Card item={item} navigation={navigation} key={index} />;
-        }}
-      />
-    </ScrollView>
+        {/**Top Rated */}
+        <Title navigation={navigation}>Top Rated</Title>
+        <FlatList
+          data={top_rated}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          scrollEnabled
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={({item, index}) => {
+            return <Card item={item} navigation={navigation} key={index} />;
+          }}
+        />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-});
 
 const mapStateToProps = (state) => ({
   loading: state.movie.loading,

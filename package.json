@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.4",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.8",
     "@react-navigation/drawer": "^5.12.4",
@@ -32,6 +33,7 @@
     "react-native-video": "^5.1.1",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {

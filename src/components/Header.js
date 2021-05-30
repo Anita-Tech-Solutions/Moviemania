@@ -1,15 +1,22 @@
 import React from 'react';
 import {StyleSheet, View, Text, TextInput, Dimensions} from 'react-native';
 import {Icon, Button} from 'react-native-elements';
+import getColorTheme from '../helpers/Theme';
 
 const {width} = Dimensions.get('window');
 
 const Header = ({navigation}) => {
+  const theme = getColorTheme();
+
   return (
-    <View style={styles.container}>
+    <View style={{backgroundColor: theme.colors.background}}>
       <View style={{margin: 10}}>
-        <Text>What movie are you looking</Text>
-        <Text style={{fontWeight: 'bold'}}>forward to seeing ?</Text>
+        <Text style={{color: theme.colors.text}}>
+          What movie are you looking
+        </Text>
+        <Text style={{fontWeight: 'bold', color: theme.colors.text}}>
+          forward to seeing ?
+        </Text>
       </View>
       <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
         <View
@@ -38,9 +45,7 @@ const Header = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-  },
+  container: {},
 });
 
 export default Header;

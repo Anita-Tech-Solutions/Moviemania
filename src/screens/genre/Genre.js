@@ -13,11 +13,14 @@ import {Dimensions, Text, View, StyleSheet, TextInput} from 'react-native';
 
 import {Button, Icon} from 'react-native-elements';
 import {Header} from '../../components';
+import getColorTheme from '../../helpers/Theme';
 
 const Top = createMaterialTopTabNavigator();
 const {width} = Dimensions.get('window');
 
 const Genre = ({fetchMovielist, navigation}) => {
+  const theme = getColorTheme();
+
   useEffect(() => {
     fetchMovielist();
   }, []);
@@ -27,9 +30,10 @@ const Genre = ({fetchMovielist, navigation}) => {
       <Top.Navigator
         swipeEnabled
         tabBarOptions={{
+          style: {backgroundColor: theme.colors.background},
           allowFontScaling: true,
           scrollEnabled: true,
-          activeTintColor: 'black',
+          activeTintColor: theme.colors.text,
           indicatorStyle: {backgroundColor: 'red'},
         }}>
         <Top.Screen name="All" component={All} />

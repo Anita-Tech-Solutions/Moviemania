@@ -1,13 +1,16 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import getColorTheme from '../helpers/Theme';
 
 const Title = ({children, navigation}) => {
+  const theme = getColorTheme();
+
   return (
     <View style={styles.container}>
-      <Text>{children}</Text>
+      <Text style={[styles.text, {color: theme.colors.text}]}>{children}</Text>
       <TouchableOpacity onPress={() => navigation.navigate(children)}>
-        <Text>See All</Text>
+        <Text style={{color: theme.colors.text}}>See All</Text>
       </TouchableOpacity>
     </View>
   );
@@ -19,6 +22,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     margin: 10,
     padding: 10,
+  },
+  text: {
+    fontSize: 18,
   },
 });
 

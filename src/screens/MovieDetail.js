@@ -10,7 +10,7 @@ import {
 
 import {Avatar, Icon} from 'react-native-elements';
 import {connect} from 'react-redux';
-import {poster, theme} from '../constants';
+import {poster} from '../constants';
 import {Card, Card3, Loading} from '../components';
 import FastImage from 'react-native-fast-image';
 
@@ -21,6 +21,7 @@ import {
   fetchRecommend,
   fetchComments,
 } from '../redux/actions/movieInfoAction';
+import getColorTheme from '../helpers/Theme';
 
 const {width} = Dimensions.get('window');
 
@@ -37,6 +38,8 @@ const MovieDetail = ({
   fetchRecommend,
   fetchComments,
 }) => {
+  const theme = getColorTheme();
+
   const {id, vote_count} = route.params;
   useEffect(() => {
     fetchDetail(id);
@@ -53,7 +56,8 @@ const MovieDetail = ({
   }
 
   return (
-    <ScrollView>
+    <ScrollView
+      contentContainerStyle={{backgroundColor: theme.colors.background}}>
       <FastImage
         source={{uri: poster + backdrop_path}}
         resizeMode="contain"
@@ -65,11 +69,11 @@ const MovieDetail = ({
         }}
       />
       <View style={styles.section}>
-        <Text style={{fontSize: 20}}>{title}</Text>
+        <Text style={{fontSize: 20, color: theme.colors.text}}>{title}</Text>
         <View style={styles.section}>
           <Icon name="fire" type="fontisto" color="orange" />
-          <Text>Attention</Text>
-          <Text>{vote_count}</Text>
+          <Text style={{color: theme.colors.text}}>Attention</Text>
+          <Text style={{color: theme.colors.text}}>{vote_count}</Text>
         </View>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -82,7 +86,12 @@ const MovieDetail = ({
               padding: 5,
               borderRadius: 15,
             }}>
-            <Text style={{fontSize: 20, fontWeight: '800', color: 'white'}}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: '800',
+                color: theme.colors.text,
+              }}>
               {name}
             </Text>
           </View>
@@ -95,7 +104,9 @@ const MovieDetail = ({
         renderItem={({item, index}) => {
           return (
             <>
-              <Text>{item.backdrops.length}</Text>
+              <Text style={{color: theme.colors.text}}>
+                {item.backdrops.length}
+              </Text>
               <FastImage
                 source={{uri: poster + item.file_path}}
                 style={{width: 100, height: 200}}
@@ -130,10 +141,11 @@ const MovieDetail = ({
       />
 
       <View>
-        <Text style={{fontSize: 20, fontWeight: '800'}}>
+        <Text
+          style={{fontSize: 20, fontWeight: '800', color: theme.colors.text}}>
           Movie introduction
         </Text>
-        <Text>{overview}</Text>
+        <Text style={{color: theme.colors.text}}>{overview}</Text>
       </View>
       <View>
         <Text style={{fontSize: 20, fontWeight: '800'}}>Recommendation</Text>
@@ -147,7 +159,7 @@ const MovieDetail = ({
         />
       </View>
       <View>
-        <Text>Comments</Text>
+        <Text style={{color: theme.colors.text}}>Comments</Text>
         <FlatList
           data={comments}
           renderItem={({item, index}) => {

@@ -2,10 +2,12 @@ import React, {memo, useEffect, useState} from 'react';
 import {FlatList, View} from 'react-native';
 import {connect} from 'react-redux';
 import {Card2, Loading} from '../../components';
+import getColorTheme from '../../helpers/Theme';
 
 import {fetchLove} from '../../redux/actions/movieAction';
 
 const Love = ({love, fetchLove, navigation}) => {
+  const theme = getColorTheme();
   const [offset, setOffset] = useState(1);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const Love = ({love, fetchLove, navigation}) => {
   };
 
   return (
-    <View>
+    <View style={{backgroundColor: theme.colors.background}}>
       <FlatList
         data={love}
         renderItem={({item, index}) => {

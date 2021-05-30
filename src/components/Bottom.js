@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {View, TouchableOpacity, StyleSheet, Keyboard} from 'react-native';
 import {Icon} from 'react-native-elements';
-import {BottomTabBar} from '@react-navigation/bottom-tabs';
+import getColorTheme from '../helpers/Theme';
 
 function MyTabBar({state, descriptors, navigation}) {
+  const theme = getColorTheme();
+
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -26,9 +28,12 @@ function MyTabBar({state, descriptors, navigation}) {
 
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
- 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {backgroundColor: theme.colors.bottomBackground},
+      ]}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 

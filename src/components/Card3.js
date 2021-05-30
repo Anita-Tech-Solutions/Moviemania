@@ -3,8 +3,11 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {Avatar} from 'react-native-elements';
 
 import {poster, theme} from '../constants';
+import getColorTheme from '../helpers/Theme';
 
 const Card3 = ({item}) => {
+  const theme = getColorTheme();
+
   const {author, author_details, content, created_at} = item;
 
   const renderContent = (title) => {
@@ -31,10 +34,10 @@ const Card3 = ({item}) => {
             />
           )}
         />
-        <Text>{author}</Text>
+        <Text style={{color: theme.colors.text}}>{author}</Text>
       </View>
       <View>
-        <Text>{renderContent(content)}</Text>
+        <Text style={{color: theme.colors.text}}>{renderContent(content)}</Text>
       </View>
     </View>
   );

@@ -2,18 +2,16 @@ import React from 'react';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 //screens
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Cast from '../screens/Cast';
-import Settings from '../screens/Settings';
+import Settings from '../screens/settings/Settings';
 
 const Bottom = createBottomTabNavigator();
 
 import {MyTabBar} from '../components';
-import Discover from '../screens/discover/discover';
 import MovieDetail from '../screens/MovieDetail';
 
 const Stack = createStackNavigator();

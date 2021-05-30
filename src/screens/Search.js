@@ -8,8 +8,10 @@ import {Card2} from '../components';
 import {searchMovie} from '../redux/actions/movieAction';
 import {connect} from 'react-redux';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import getColorTheme from '../helpers/Theme';
 
 const Search = ({searchMovie, search, navigation}) => {
+  const theme = getColorTheme();
   const [query, setQuery] = useState('');
   const [num, setNum] = useState(0);
 
@@ -18,31 +20,30 @@ const Search = ({searchMovie, search, navigation}) => {
   }, [searchMovie, search]);
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={styles.container}>
-        <View style={styles.search}>
-          <Icon name="search" />
-          <TextInput
-            placeholder="Type movie name here"
-            onSubmitEditing={(event) => searchMovie(event.nativeEvent.text)}
-          />
-        </View>
-        <FlatList
-          data={search}
-          renderItem={({item, index}) => (
-            <Card2 item={item} key={index} navigation={navigation} />
-          )}
-          keyExtractor={(_, index) => index.toString()}
+    <View
+      style={[styles.container, {backgroundColor: theme.colors.background}]}>
+      <View style={styles.search}>
+        <Icon name="search" />
+        <TextInput
+          placeholder="Type movie name here"
+          placeholderTextColor={theme.colors.text}
+          onSubmitEditing={(event) => searchMovie(event.nativeEvent.text)}
         />
       </View>
-    </SafeAreaView>
+      <FlatList
+        data={search}
+        renderItem={({item, index}) => (
+          <Card2 item={item} key={index} navigation={navigation} />
+        )}
+        keyExtractor={(_, index) => index.toString()}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
   },
   search: {
     flexDirection: 'row',

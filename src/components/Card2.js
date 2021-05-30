@@ -4,10 +4,13 @@ import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {poster} from '../constants';
 
 import FastImage from 'react-native-fast-image';
+import getColorTheme from '../helpers/Theme';
 
 const {width} = Dimensions.get('window');
 
 const Card2 = ({item, navigation}) => {
+  const theme = getColorTheme();
+
   const {
     id,
     title,
@@ -28,7 +31,8 @@ const Card2 = ({item, navigation}) => {
   return (
     <TouchableWithoutFeedback
       onPress={() => navigation.navigate('Detail', {id, vote_count})}>
-      <View style={styles.container}>
+      <View
+        style={[styles.container, {backgroundColor: theme.colors.background}]}>
         <View>
           {poster_path === null ? (
             <FastImage
@@ -55,12 +59,22 @@ const Card2 = ({item, navigation}) => {
           )}
         </View>
         <View style={{width: width * 0.5, marginLeft: 10}}>
-          <Text style={{fontSize: 16, fontWeight: '800'}}>{title}</Text>
-          <Text style={{fontSize: 12, textAlign: 'justify'}}>
+          <Text
+            style={{fontSize: 16, fontWeight: '800', color: theme.colors.text}}>
+            {title}
+          </Text>
+          <Text
+            style={{
+              fontSize: 12,
+              textAlign: 'justify',
+              color: theme.colors.text,
+            }}>
             {renderTitle(overview)}
           </Text>
-          <Text>Attention-{vote_count}</Text>
-          <Text>Release-Date-{release_date}</Text>
+          <Text style={{color: theme.colors.text}}>Attention-{vote_count}</Text>
+          <Text style={{color: theme.colors.text}}>
+            Release-Date-{release_date}
+          </Text>
           <Text style={{color: 'orange'}}>Rating-{vote_average}</Text>
         </View>
       </View>

@@ -7,6 +7,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Cast from '../screens/Cast';
+import Tv from '../screens/Tv';
 import Settings from '../screens/settings/Settings';
 
 const Bottom = createBottomTabNavigator();
@@ -21,6 +22,7 @@ import Trending from '../screens/Trending';
 import Upcoming from '../screens/Upcoming';
 import Toprated from '../screens/Toprated';
 import CastDetail from '../screens/CastDetail';
+import TvDetail from '../screens/TvDetail';
 
 function HomeStack() {
   return (
@@ -47,6 +49,15 @@ function DiscoverStack() {
   );
 }
 
+function TvStack() {
+  return (
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="Tv" component={Tv} />
+      <Stack.Screen name="Tvdetail" component={TvDetail} />
+    </Stack.Navigator>
+  );
+}
+
 export default function MainNavigator() {
   return (
     <Bottom.Navigator
@@ -54,7 +65,7 @@ export default function MainNavigator() {
       tabBar={(props) => <MyTabBar {...props} />}>
       <Bottom.Screen name="Home" component={HomeStack} />
       <Bottom.Screen name="Discover" component={DiscoverStack} />
-      <Bottom.Screen name="Cast" component={Cast} />
+      <Bottom.Screen name="Cast" component={TvStack} />
       <Bottom.Screen name="Settings" component={Settings} />
     </Bottom.Navigator>
   );

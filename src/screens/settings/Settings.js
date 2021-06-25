@@ -34,7 +34,7 @@ const data = [
   },
   {
     title: 'Help and Support',
-    iconName: 'headfones',
+    iconName: 'headphones',
     iconType: 'feather',
   },
   {
@@ -65,6 +65,7 @@ const Settings = () => {
         if (title == 'Appearance') {
           return (
             <ListItem
+              key={'Apearnce'}
               containerStyle={{
                 backgroundColor: themeColor.colors.background,
               }}>

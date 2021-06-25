@@ -14,6 +14,7 @@ import {Dimensions, Text, View, StyleSheet, TextInput} from 'react-native';
 import {Button, Icon} from 'react-native-elements';
 import {Header} from '../../components';
 import getColorTheme from '../../helpers/Theme';
+import {font} from '../../constants';
 
 const Top = createMaterialTopTabNavigator();
 const {width} = Dimensions.get('window');
@@ -30,6 +31,7 @@ const Genre = ({fetchMovielist, navigation}) => {
       <Top.Navigator
         swipeEnabled
         tabBarOptions={{
+          labelStyle: {fontFamily: font.obold, color: theme.colors.text},
           style: {backgroundColor: theme.colors.background},
           allowFontScaling: true,
           scrollEnabled: true,

@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {font} from '../constants';
 import getColorTheme from '../helpers/Theme';
 
 const Title = ({children, navigation}) => {
@@ -8,9 +9,17 @@ const Title = ({children, navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.text, {color: theme.colors.text}]}>{children}</Text>
+      <Text
+        style={[
+          styles.text,
+          {color: theme.colors.text, fontFamily: font.obold},
+        ]}>
+        {children}
+      </Text>
       <TouchableOpacity onPress={() => navigation.navigate(children)}>
-        <Text style={{color: theme.colors.text}}>See All</Text>
+        <Text style={{color: theme.colors.text, fontFamily: font.italic}}>
+          See All
+        </Text>
       </TouchableOpacity>
     </View>
   );

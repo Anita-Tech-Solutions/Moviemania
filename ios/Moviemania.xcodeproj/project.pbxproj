@@ -15,6 +15,16 @@
 		272CDF3A2683501D00A95409 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272CDF392683501D00A95409 /* NotificationService.swift */; };
 		272CDF3E2683501D00A95409 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 272CDF372683501D00A95409 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		272CDF4B2683608400A95409 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 272CDF4A2683608400A95409 /* libPods-OneSignalNotificationServiceExtension.a */; };
+		27F54B5526863D5A00883110 /* Oxygen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5226863D5800883110 /* Oxygen-Bold.ttf */; };
+		27F54B5626863D5A00883110 /* Oxygen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5326863D5900883110 /* Oxygen-Regular.ttf */; };
+		27F54B5726863D5A00883110 /* Oxygen-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5426863D5900883110 /* Oxygen-Light.ttf */; };
+		27F54B5F2686402500883110 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B582686402400883110 /* Roboto-Regular.ttf */; };
+		27F54B602686402500883110 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B592686402400883110 /* Roboto-Medium.ttf */; };
+		27F54B612686402500883110 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5A2686402400883110 /* Roboto-Bold.ttf */; };
+		27F54B622686402500883110 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5B2686402400883110 /* Roboto-Thin.ttf */; };
+		27F54B632686402500883110 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5C2686402400883110 /* Roboto-Black.ttf */; };
+		27F54B642686402500883110 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5D2686402400883110 /* Roboto-Light.ttf */; };
+		27F54B652686402500883110 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5E2686402500883110 /* Roboto-Italic.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -88,6 +98,16 @@
 		272CDF4426835FD600A95409 /* libreact-native-onesignal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-onesignal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		272CDF462683605300A95409 /* OneSignal.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OneSignal.xcframework; path = Pods/OneSignalXCFramework/iOS_SDK/OneSignalSDK/OneSignal_XCFramework/OneSignal.xcframework; sourceTree = "<group>"; };
 		272CDF4A2683608400A95409 /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27F54B5226863D5800883110 /* Oxygen-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Bold.ttf"; sourceTree = "<group>"; };
+		27F54B5326863D5900883110 /* Oxygen-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Regular.ttf"; sourceTree = "<group>"; };
+		27F54B5426863D5900883110 /* Oxygen-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Light.ttf"; sourceTree = "<group>"; };
+		27F54B582686402400883110 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		27F54B592686402400883110 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		27F54B5A2686402400883110 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		27F54B5B2686402400883110 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		27F54B5C2686402400883110 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		27F54B5D2686402400883110 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		27F54B5E2686402500883110 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Moviemania-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moviemania-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Moviemania-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Moviemania-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3519FBEF0EEF7CCDD13C8016 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +232,16 @@
 		7259BF693A1740F195E4E272 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27F54B5C2686402400883110 /* Roboto-Black.ttf */,
+				27F54B5A2686402400883110 /* Roboto-Bold.ttf */,
+				27F54B5E2686402500883110 /* Roboto-Italic.ttf */,
+				27F54B5D2686402400883110 /* Roboto-Light.ttf */,
+				27F54B592686402400883110 /* Roboto-Medium.ttf */,
+				27F54B582686402400883110 /* Roboto-Regular.ttf */,
+				27F54B5B2686402400883110 /* Roboto-Thin.ttf */,
+				27F54B5226863D5800883110 /* Oxygen-Bold.ttf */,
+				27F54B5426863D5900883110 /* Oxygen-Light.ttf */,
+				27F54B5326863D5900883110 /* Oxygen-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -308,7 +338,6 @@
 				259177DB7CE3B68673D335A5 /* [CP] Copy Pods Resources */,
 				5C6E4736D04793396F044CC0 /* [CP-User] [RNFB] Core Configuration */,
 				272CDF422683501D00A95409 /* Embed App Extensions */,
-				3A52074E800A6BC288CBD979 /* [CP-User] [RNFB] Crashlytics Configuration */,
 			);
 			buildRules = (
 			);
@@ -443,6 +472,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F54B5F2686402500883110 /* Roboto-Regular.ttf in Resources */,
+				27F54B602686402500883110 /* Roboto-Medium.ttf in Resources */,
+				27F54B612686402500883110 /* Roboto-Bold.ttf in Resources */,
+				27F54B622686402500883110 /* Roboto-Thin.ttf in Resources */,
+				27F54B632686402500883110 /* Roboto-Black.ttf in Resources */,
+				27F54B642686402500883110 /* Roboto-Light.ttf in Resources */,
+				27F54B652686402500883110 /* Roboto-Italic.ttf in Resources */,
+				27F54B5526863D5A00883110 /* Oxygen-Bold.ttf in Resources */,
+				27F54B5626863D5A00883110 /* Oxygen-Regular.ttf in Resources */,
+				27F54B5726863D5A00883110 /* Oxygen-Light.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				272CDF31268349AF00A95409 /* GoogleService-Info.plist in Resources */,
@@ -613,20 +652,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		3A52074E800A6BC288CBD979 /* [CP-User] [RNFB] Crashlytics Configuration */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = "[CP-User] [RNFB] Crashlytics Configuration";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\nset -e\n\nif [[ ${PODS_ROOT} ]]; then\n  echo \"info: Exec FirebaseCrashlytics Run from Pods\"\n  \"${PODS_ROOT}/FirebaseCrashlytics/run\"\nelse\n  echo \"info: Exec FirebaseCrashlytics Run from framework\"\n  \"${PROJECT_DIR}/FirebaseCrashlytics.framework/run\"\nfi\n";
 		};
 		48BC82482BDDE0651CDC94CE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

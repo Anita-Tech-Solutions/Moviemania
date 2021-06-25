@@ -4,7 +4,7 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 
 import {store, persistor} from './src/redux';
 
@@ -52,11 +52,16 @@ import messaging from '@react-native-firebase/messaging';
 
 const Status = () => {
   const insets = useSafeAreaInsets();
+  const state = useSelector((state) => state.theme.theme);
   const theme = getColorTheme();
+
   return (
     <View
       style={{backgroundColor: theme.colors.background, height: insets.top}}>
-      <StatusBar barStyle="default" backgroundColor={theme.colors.background} />
+      <StatusBar
+        barStyle={state ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.colors.background}
+      />
     </View>
   );
 };

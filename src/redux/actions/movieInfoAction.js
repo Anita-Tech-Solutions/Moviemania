@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import {
   FETCH_CAST,
+  FETCH_CAST_DETAIL,
   FETCH_COMMENTS,
   FETCH_DETAIL,
   FETCH_IMAGES,
@@ -29,6 +30,15 @@ const fetchCast = (id) =>
       console.log(e);
     }
   });
+
+const fetchCastDetail = (id) => async (dispatch) => {
+  try {
+    const response = await moviemania.get(`person/${id}`);
+    dispatch({type: FETCH_CAST_DETAIL, payload: response.data});
+  } catch (error) {
+    throw error;
+  }
+};
 
 const fetchImages = (id) =>
   _.memoize(async (dispatch) => {
@@ -72,6 +82,7 @@ const fetchVideo = (id) => async (dispatch) => {
 export {
   fetchDetail,
   fetchCast,
+  fetchCastDetail,
   fetchImages,
   fetchRecommend,
   fetchComments,

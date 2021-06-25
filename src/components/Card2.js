@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text, Image, Dimensions} from 'react-native';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
-import {poster} from '../constants';
+import {font, poster} from '../constants';
 
 import FastImage from 'react-native-fast-image';
 import getColorTheme from '../helpers/Theme';
@@ -71,8 +71,10 @@ const Card2 = ({item, navigation}) => {
             }}>
             {renderTitle(overview)}
           </Text>
-          <Text style={{color: theme.colors.text}}>Attention-{vote_count}</Text>
-          <Text style={{color: theme.colors.text}}>
+          <Text style={{color: theme.colors.text, fontFamily: font.oregular}}>
+            Attention-{vote_count}
+          </Text>
+          <Text style={{color: theme.colors.text, fontFamily: font.oregular}}>
             Release-Date-{release_date}
           </Text>
           <Text style={{color: 'orange'}}>Rating-{vote_average}</Text>

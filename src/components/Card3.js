@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {Avatar} from 'react-native-elements';
 
-import {poster, theme} from '../constants';
+import {font, poster, theme} from '../constants';
 import getColorTheme from '../helpers/Theme';
 
 const Card3 = ({item}) => {
@@ -34,10 +34,14 @@ const Card3 = ({item}) => {
             />
           )}
         />
-        <Text style={{color: theme.colors.text}}>{author}</Text>
+        <Text style={{color: theme.colors.text, fontFamily: font.medium}}>
+          {author}
+        </Text>
       </View>
       <View>
-        <Text style={{color: theme.colors.text}}>{renderContent(content)}</Text>
+        <Text style={{color: theme.colors.text, fontFamily: font.regular}}>
+          {renderContent(content)}
+        </Text>
       </View>
     </View>
   );
@@ -50,4 +54,3 @@ const styles = StyleSheet.create({
 });
 
 export default Card3;
-

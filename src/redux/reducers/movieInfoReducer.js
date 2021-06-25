@@ -1,5 +1,6 @@
 import {
   FETCH_CAST,
+  FETCH_CAST_DETAIL,
   FETCH_COMMENTS,
   FETCH_DETAIL,
   FETCH_IMAGES,
@@ -15,6 +16,7 @@ const initial_state = {
   recommend: [],
   comments: [],
   video: [],
+  castdetail: null,
 };
 
 export default (state = initial_state, action) => {
@@ -29,6 +31,8 @@ export default (state = initial_state, action) => {
       return {...state, recommend: action.payload};
     case FETCH_COMMENTS:
       return {...state, comments: action.payload};
+    case FETCH_CAST_DETAIL:
+      return {...state, castdetail: action.payload};
     case FETCH_VIDEO:
       return {...state, video: action.payload};
     default:

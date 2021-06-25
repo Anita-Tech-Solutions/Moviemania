@@ -15,7 +15,6 @@
     "@react-native-firebase/analytics": "^12.1.0",
     "@react-native-firebase/app": "^12.1.0",
     "@react-native-firebase/auth": "^12.1.0",
-    "@react-native-firebase/crashlytics": "^12.1.0",
     "@react-native-firebase/in-app-messaging": "^12.1.0",
     "@react-native-firebase/messaging": "^12.1.0",
     "@react-native-firebase/remote-config": "^12.1.0",

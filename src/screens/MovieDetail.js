@@ -10,7 +10,7 @@ import {
 
 import {Avatar, Icon} from 'react-native-elements';
 import {connect} from 'react-redux';
-import {poster} from '../constants';
+import {font, poster} from '../constants';
 import {Card, Card3, Loading} from '../components';
 import FastImage from 'react-native-fast-image';
 import {WebView} from 'react-native-webview';
@@ -64,21 +64,34 @@ const MovieDetail = ({
       contentContainerStyle={{backgroundColor: theme.colors.background}}>
       <FastImage
         source={{uri: poster + backdrop_path}}
-        resizeMode="contain"
+        onProgress={(e) =>
+          console.log(e.nativeEvent.loaded / e.nativeEvent.total)
+        }
+        resizeMode="cover"
         style={{
           width,
-          height: 200,
-          borderBottomLeftRadius: 15,
-          borderBottomRightRadius: 15,
+          height: 250,
+          borderRadius: 5,
+          backgroundColor: 'red',
         }}
       />
-      <Text>{id}</Text>
       <View style={styles.section}>
-        <Text style={{fontSize: 20, color: theme.colors.text}}>{title}</Text>
+        <Text
+          style={{
+            fontSize: 20,
+            color: theme.colors.text,
+            fontFamily: font.obold,
+          }}>
+          {title}
+        </Text>
         <View style={styles.section}>
           <Icon name="fire" type="fontisto" color="orange" />
-          <Text style={{color: theme.colors.text}}>Attention</Text>
-          <Text style={{color: theme.colors.text}}>{vote_count}</Text>
+          <Text style={{color: theme.colors.text, fontFamily: font.obold}}>
+            Attention
+          </Text>
+          <Text style={{color: theme.colors.text, fontFamily: font.oregular}}>
+            {vote_count}
+          </Text>
         </View>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -88,14 +101,14 @@ const MovieDetail = ({
             style={{
               margin: 5,
               backgroundColor: 'orange',
-              padding: 5,
+              padding: 10,
               borderRadius: 15,
             }}>
             <Text
               style={{
-                fontSize: 20,
-                fontWeight: '800',
+                fontSize: 18,
                 color: theme.colors.text,
+                fontFamily: font.obold,
               }}>
               {name}
             </Text>
@@ -110,7 +123,8 @@ const MovieDetail = ({
         renderItem={({item, index}) => {
           return (
             <>
-              <Text style={{color: theme.colors.text}}>
+              <Text
+                style={{color: theme.colors.text, fontFamily: font.regular}}>
                 {item.backdrops.length}
               </Text>
               <FastImage
@@ -141,20 +155,32 @@ const MovieDetail = ({
                 borderRadius: 10,
               }}
               imageProps={{resizeMode: 'cover'}}
+              onPress={() => navigation.navigate('Castdetail', {id: item.id})}
             />
           );
         }}
       />
 
-      <View>
+      <View style={{padding: 10}}>
         <Text
-          style={{fontSize: 20, fontWeight: '800', color: theme.colors.text}}>
+          style={{
+            fontSize: 20,
+            fontFamily: font.bold,
+            color: theme.colors.text,
+          }}>
           Movie introduction
         </Text>
         <Text style={{color: theme.colors.text}}>{overview}</Text>
       </View>
-      <View>
-        <Text style={{fontSize: 20, fontWeight: '800'}}>Recommendation</Text>
+      <View style={{padding: 10}}>
+        <Text
+          style={{
+            fontSize: 20,
+            color: theme.colors.text,
+            fontFamily: font.bold,
+          }}>
+          Recommendation
+        </Text>
         <FlatList
           horizontal
           keyExtractor={(_, index) => index.toString()}
@@ -164,8 +190,15 @@ const MovieDetail = ({
           )}
         />
       </View>
-      <View>
-        <Text style={{color: theme.colors.text, fontSize: 25}}>Trailers</Text>
+      <View style={{padding: 10}}>
+        <Text
+          style={{
+            color: theme.colors.text,
+            fontSize: 20,
+            fontFamily: font.bold,
+          }}>
+          Trailers
+        </Text>
         <FlatList
           horizontal
           pagingEnabled
@@ -189,8 +222,15 @@ const MovieDetail = ({
           }}
         />
       </View>
-      <View>
-        <Text style={{color: theme.colors.text}}>Comments</Text>
+      <View style={{padding: 10}}>
+        <Text
+          style={{
+            color: theme.colors.text,
+            fontFamily: font.bold,
+            fontSize: 20,
+          }}>
+          Comments
+        </Text>
         <FlatList
           data={comments}
           renderItem={({item, index}) => {

@@ -14,6 +14,7 @@ target 'Moviemania' do
   target 'MoviemaniaTests' do
     inherit! :complete
     # Pods for testing
+    pod 'Firebase/Analytics'
   end
 
   # Enables Flipper.
@@ -24,6 +25,10 @@ target 'Moviemania' do
   post_install do |installer|
     flipper_post_install(installer)
   end
+end
+
+target 'OneSignalNotificationServiceExtension' do
+  pod 'OneSignal', '>= 3.0', '< 4.0'
 end
 
 target 'Moviemania-tvOS' do

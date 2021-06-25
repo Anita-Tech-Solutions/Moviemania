@@ -13,13 +13,14 @@ import {connect} from 'react-redux';
 import {poster} from '../constants';
 import {Card, Card3, Loading} from '../components';
 import FastImage from 'react-native-fast-image';
-
+import {WebView} from 'react-native-webview';
 import {
   fetchCast,
   fetchDetail,
   fetchImages,
   fetchRecommend,
   fetchComments,
+  fetchVideo,
 } from '../redux/actions/movieInfoAction';
 import getColorTheme from '../helpers/Theme';
 
@@ -33,10 +34,12 @@ const MovieDetail = ({
   images,
   recommend,
   comments,
+  video,
   fetchDetail,
   fetchCast,
   fetchRecommend,
   fetchComments,
+  fetchVideo,
 }) => {
   const theme = getColorTheme();
 
@@ -47,6 +50,7 @@ const MovieDetail = ({
     fetchImages(id);
     fetchRecommend(id);
     fetchComments(id);
+    fetchVideo(id);
   }, []);
 
   const {title, backdrop_path, overview, genres} = detail;
@@ -68,6 +72,7 @@ const MovieDetail = ({
           borderBottomRightRadius: 15,
         }}
       />
+      <Text>{id}</Text>
       <View style={styles.section}>
         <Text style={{fontSize: 20, color: theme.colors.text}}>{title}</Text>
         <View style={styles.section}>
@@ -99,6 +104,7 @@ const MovieDetail = ({
       </ScrollView>
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={false}
         data={images}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({item, index}) => {
@@ -159,6 +165,31 @@ const MovieDetail = ({
         />
       </View>
       <View>
+        <Text style={{color: theme.colors.text, fontSize: 25}}>Trailers</Text>
+        <FlatList
+          horizontal
+          pagingEnabled
+          data={video}
+          contentContainerStyle={{height: 200}}
+          ListEmptyComponent={
+            <Text style={{fontSize: 25, color: 'red'}}>Empty</Text>
+          }
+          renderItem={({item, index}) => {
+            return (
+              <View style={{flex: 1, width}}>
+                <WebView
+                  javaScriptEnabled={true}
+                  domStorageEnabled={true}
+                  source={{
+                    uri: 'https://www.youtube.com/embed/' + item.key,
+                  }}
+                />
+              </View>
+            );
+          }}
+        />
+      </View>
+      <View>
         <Text style={{color: theme.colors.text}}>Comments</Text>
         <FlatList
           data={comments}
@@ -194,6 +225,7 @@ const mapStateToProps = (state) => ({
   images: state.detail.images,
   recommend: state.detail.recommend,
   comments: state.detail.comments,
+  video: state.detail.video,
 });
 
 export default connect(mapStateToProps, {
@@ -202,4 +234,5 @@ export default connect(mapStateToProps, {
   fetchImages,
   fetchRecommend,
   fetchComments,
+  fetchVideo,
 })(MovieDetail);

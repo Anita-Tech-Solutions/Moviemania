@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "117338832330",
+    "project_id": "moviemania-4e83c",
+    "storage_bucket": "moviemania-4e83c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117338832330:android:9885163dc3b50b28276333",
+        "android_client_info": {
+          "package_name": "com.moviemania"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117338832330-jrvrrp81c8oi2vo1rq5irpqhtfh3dgl3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moviemania",
+            "certificate_hash": "77a4ec6c0a12ccff78a354fe29c2cdc15f88d89c"
+          }
+        },
+        {
+          "client_id": "117338832330-nblf205fi55pgi8vgp444hf9rp4drlge.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moviemania",
+            "certificate_hash": "481ee5458546e5367df6e7f432cfc19e0d679b0f"
+          }
+        },
+        {
+          "client_id": "117338832330-sjgep1kb799dncutagir2vunj38b05m7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAm-cV_M1q_UeUY_LTsJ8vo99o5hjnKVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "117338832330-sjgep1kb799dncutagir2vunj38b05m7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "117338832330-q2kmrh3i4vv19c3iu35965k9arvv9mno.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Moviemania"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

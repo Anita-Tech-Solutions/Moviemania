@@ -24,5 +24,6 @@ export const FETCH_WATCH_PROVIDER = 'fetch_watch_provider';
 export const FETCH_LISTS = 'fetch_lists';
 export const FETCH_IMAGES = 'fetch_images';
 export const FETCH_RECOMMEND = 'fetch_recommend';
+export const FETCH_VIDEO = 'fetch_video';
 
 export const FETCH_COMMENTS = 'fetch_comments';

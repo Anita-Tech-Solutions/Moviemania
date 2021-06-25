@@ -5,6 +5,7 @@ import {
   FETCH_DETAIL,
   FETCH_IMAGES,
   FETCH_RECOMMEND,
+  FETCH_VIDEO,
 } from './types';
 
 import moviemania from '../../api';
@@ -59,4 +60,20 @@ const fetchComments = (id) =>
     }
   });
 
-export {fetchDetail, fetchCast, fetchImages, fetchRecommend, fetchComments};
+const fetchVideo = (id) => async (dispatch) => {
+  try {
+    const response = await moviemania.get(`movie/${id}/videos`);
+    dispatch({type: FETCH_VIDEO, payload: response.data.results});
+  } catch (error) {
+    throw error;
+  }
+};
+
+export {
+  fetchDetail,
+  fetchCast,
+  fetchImages,
+  fetchRecommend,
+  fetchComments,
+  fetchVideo,
+};

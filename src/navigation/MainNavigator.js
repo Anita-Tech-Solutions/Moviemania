@@ -20,6 +20,7 @@ import Genre from '../screens/genre/Genre';
 import Trending from '../screens/Trending';
 import Upcoming from '../screens/Upcoming';
 import Toprated from '../screens/Toprated';
+import CastDetail from '../screens/CastDetail';
 
 function HomeStack() {
   return (
@@ -30,6 +31,7 @@ function HomeStack() {
       <Stack.Screen name="Upcoming" component={Upcoming} />
       <Stack.Screen name="Top Rated" component={Toprated} />
       <Stack.Screen name="Detail" component={MovieDetail} />
+      <Stack.Screen name="Castdetail" component={CastDetail} />
     </Stack.Navigator>
   );
 }
@@ -40,6 +42,7 @@ function DiscoverStack() {
       <Stack.Screen name="Discover" component={Genre} />
       <Stack.Screen name="Search" component={Search} />
       <Stack.Screen name="Detail" component={MovieDetail} />
+      <Stack.Screen name="Castdetail" component={CastDetail} />
     </Stack.Navigator>
   );
 }

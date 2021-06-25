@@ -51,4 +51,3 @@ const styles = StyleSheet.create({
 
 export default Card3;
 
-//some changes

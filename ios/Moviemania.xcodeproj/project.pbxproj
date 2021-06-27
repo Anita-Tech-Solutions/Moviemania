@@ -15,6 +15,7 @@
 		272CDF3A2683501D00A95409 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272CDF392683501D00A95409 /* NotificationService.swift */; };
 		272CDF3E2683501D00A95409 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 272CDF372683501D00A95409 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		272CDF4B2683608400A95409 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 272CDF4A2683608400A95409 /* libPods-OneSignalNotificationServiceExtension.a */; };
+		2770F1342688EA8600336EA8 /* libswiftWebKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2770F1332688EA8600336EA8 /* libswiftWebKit.tbd */; };
 		27F54B5526863D5A00883110 /* Oxygen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5226863D5800883110 /* Oxygen-Bold.ttf */; };
 		27F54B5626863D5A00883110 /* Oxygen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5326863D5900883110 /* Oxygen-Regular.ttf */; };
 		27F54B5726863D5A00883110 /* Oxygen-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5426863D5900883110 /* Oxygen-Light.ttf */; };
@@ -98,6 +99,7 @@
 		272CDF4426835FD600A95409 /* libreact-native-onesignal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-onesignal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		272CDF462683605300A95409 /* OneSignal.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OneSignal.xcframework; path = Pods/OneSignalXCFramework/iOS_SDK/OneSignalSDK/OneSignal_XCFramework/OneSignal.xcframework; sourceTree = "<group>"; };
 		272CDF4A2683608400A95409 /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2770F1332688EA8600336EA8 /* libswiftWebKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftWebKit.tbd; path = usr/lib/swift/libswiftWebKit.tbd; sourceTree = SDKROOT; };
 		27F54B5226863D5800883110 /* Oxygen-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Bold.ttf"; sourceTree = "<group>"; };
 		27F54B5326863D5900883110 /* Oxygen-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Regular.ttf"; sourceTree = "<group>"; };
 		27F54B5426863D5900883110 /* Oxygen-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Light.ttf"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2770F1342688EA8600336EA8 /* libswiftWebKit.tbd in Frameworks */,
 				862E4069369942A9BA2EEFD9 /* libPods-Moviemania.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +218,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2770F1332688EA8600336EA8 /* libswiftWebKit.tbd */,
 				272CDF4A2683608400A95409 /* libPods-OneSignalNotificationServiceExtension.a */,
 				272CDF462683605300A95409 /* OneSignal.xcframework */,
 				272CDF4426835FD600A95409 /* libreact-native-onesignal.a */,
@@ -968,6 +972,10 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Moviemania/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -993,6 +1001,10 @@
 				DEVELOPMENT_TEAM = BTN82VT498;
 				INFOPLIST_FILE = Moviemania/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

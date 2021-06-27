@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   ActivityIndicator,
+  Dimensions,
 } from 'react-native';
 import {} from 'react-native-elements';
 import FastImage from 'react-native-fast-image';
@@ -13,8 +14,13 @@ import FastImage from 'react-native-fast-image';
 import {fetchCastDetail} from '../redux/actions/movieInfoAction';
 import {connect} from 'react-redux';
 import {poster} from '../constants';
+import getColorTheme from '../helpers/Theme';
+
+const {width, height} = Dimensions.get('screen');
 
 const CastDetail = ({route, fetchCastDetail, detail}) => {
+  const theme = getColorTheme();
+
   const {id} = route.params;
 
   useEffect(() => {
@@ -37,24 +43,24 @@ const CastDetail = ({route, fetchCastDetail, detail}) => {
   } = detail;
 
   return (
-    <View>
-      <Text>CastDetail-{id}</Text>
+    <ScrollView
+      bounces={false}
+      showsVerticalScrollIndicator={false}
+      style={{backgroundColor: theme.colors.background}}>
       <FastImage
-        onProgress={(e) =>
-          console.log(e.nativeEvent.loaded / e.nativeEvent.total)
-        }
         onLoadStart={() => <ActivityIndicator size="large" color="red" />}
-        source={{uri: poster + profile_path}}
-        style={{width: 300, height: 200}}
+        source={{ uri: poster + profile_path }}
+        resizeMode="contain"
+        style={{width, height: 200}}
       />
-      <Text>{name}</Text>
-      <Text>{gender}</Text>
-      <Text>{popularity}</Text>
-      <Text>{birthday}</Text>
-      <Text>{biography}</Text>
-      <Text>{place_of_birth}</Text>
-      <Text>{known_for_department}</Text>
-    </View>
+      <Text style={{color: theme.colors.text}}>{name}</Text>
+      <Text style={{color: theme.colors.text}}>{gender}</Text>
+      <Text style={{color: theme.colors.text}}>{popularity}</Text>
+      <Text style={{color: theme.colors.text}}>{birthday}</Text>
+      <Text style={{color: theme.colors.text}}>{biography}</Text>
+      <Text style={{color: theme.colors.text}}>{place_of_birth}</Text>
+      <Text style={{color: theme.colors.text}}>{known_for_department}</Text>
+    </ScrollView>
   );
 };
 

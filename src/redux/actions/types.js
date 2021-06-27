@@ -30,5 +30,6 @@ export const FETCH_VIDEO = 'fetch_video';
 //tv
 export const FETCH_TV_POPULAR = 'fetch_tv_popular';
 export const FETCH_TV_TOPRATED = 'fetch_tv_toprated';
+export const SEARCH_TV = 'search_tv';
 
 export const FETCH_COMMENTS = 'fetch_comments';

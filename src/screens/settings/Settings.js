@@ -60,7 +60,24 @@ const Settings = () => {
       <Text style={[{color: themeColor.colors.text}, styles.heading]}>
         Settings
       </Text>
-      <SearchBar round />
+      <SearchBar
+        round
+        showCancel={true}
+        placeholder="Search Tv..."
+        placeholderTextColor={themeColor.colors.text}
+        containerStyle={{
+          backgroundColor: themeColor.colors.background,
+          borderTopColor: themeColor.colors.background,
+          borderBottomColor: themeColor.colors.background,
+        }}
+        inputContainerStyle={{
+          backgroundColor: themeColor.colors.background,
+          borderWidth: 1,
+          borderBottomWidth: 1,
+          borderColor: themeColor.colors.text,
+        }}
+        inputStyle={{}}
+      />
       {data.map(({title, iconName, iconType}, index) => {
         if (title == 'Appearance') {
           return (

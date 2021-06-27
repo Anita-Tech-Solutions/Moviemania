@@ -1,7 +1,7 @@
 import React, {memo, useEffect, useState} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View, ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
-import {Card2, Loading} from '../../components';
+import {Card2} from '../../components';
 import getColorTheme from '../../helpers/Theme';
 
 import {fetchLove} from '../../redux/actions/movieAction';
@@ -29,7 +29,9 @@ const Love = ({love, fetchLove, navigation}) => {
         keyExtractor={(_, index) => index.toString()}
         onEndReached={getData}
         onEndReachedThreshold={0.5}
-        ListFooterComponent={love && <Loading />}
+        ListFooterComponent={
+          love && <ActivityIndicator size="large" color={theme.colors.text} />
+        }
       />
     </View>
   );

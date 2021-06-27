@@ -202,6 +202,10 @@ PODS:
   - libwebp/mux (1.2.0):
     - libwebp/demux
   - libwebp/webp (1.2.0)
+  - lottie-ios (3.1.9)
+  - lottie-react-native (4.0.2):
+    - lottie-ios (~> 3.1.8)
+    - React-Core
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -553,6 +557,7 @@ DEPENDENCIES:
   - FlipperKit/FlipperKitUserDefaultsPlugin (= 0.74.0)
   - FlipperKit/SKIOSNetworkPlugin (= 0.74.0)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - lottie-react-native (from `../node_modules/lottie-react-native`)
   - OneSignal (< 4.0, >= 3.0)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
@@ -628,6 +633,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - libevent
     - libwebp
+    - lottie-ios
     - nanopb
     - OneSignal
     - OpenSSL-Universal
@@ -645,6 +651,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  lottie-react-native:
+    :path: "../node_modules/lottie-react-native"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -761,6 +769,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
+  lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
+  lottie-react-native: 4dff8fe8d10ddef9e7880e770080f4a56121397e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OneSignal: 055f4c94ee8af87417777ad33fb807cea70df320
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b

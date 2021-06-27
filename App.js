@@ -72,7 +72,7 @@ const App = () => {
     messaging()
       .getToken()
       .then((token) => {
-        console.log(token);
+        // console.log(token);
       });
   }, []);
 

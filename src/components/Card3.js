@@ -21,6 +21,7 @@ const Card3 = ({item}) => {
     <View style={styles.container}>
       <View style={{flexDirection: 'row'}}>
         <Avatar
+          rounded
           source={{uri: poster + author_details.avatar_path}}
           renderPlaceholderContent={() => (
             <Image
@@ -34,12 +35,22 @@ const Card3 = ({item}) => {
             />
           )}
         />
-        <Text style={{color: theme.colors.text, fontFamily: font.medium}}>
+        <Text
+          style={{
+            color: theme.colors.text,
+            fontFamily: font.medium,
+            marginLeft: 10,
+          }}>
           {author}
         </Text>
       </View>
       <View>
-        <Text style={{color: theme.colors.text, fontFamily: font.regular}}>
+        <Text
+          style={{
+            color: theme.colors.text,
+            fontFamily: font.regular,
+            margin: 5,
+          }}>
           {renderContent(content)}
         </Text>
       </View>

@@ -1,9 +1,11 @@
 import React from 'react';
 import {StyleSheet, View, Text, Image, Dimensions} from 'react-native';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
-import {font, poster} from '../constants';
-
+import {Icon, AirbnbRating} from 'react-native-elements';
 import FastImage from 'react-native-fast-image';
+
+//components
+import {font, poster} from '../constants';
 import getColorTheme from '../helpers/Theme';
 
 const {width} = Dimensions.get('window');
@@ -58,7 +60,12 @@ const Card2 = ({item, navigation}) => {
             />
           )}
         </View>
-        <View style={{width: width * 0.5, marginLeft: 10}}>
+        <View
+          style={{
+            width: width * 0.5,
+            marginLeft: 10,
+            justifyContent: 'space-between',
+          }}>
           <Text
             style={{fontSize: 16, fontWeight: '800', color: theme.colors.text}}>
             {title}
@@ -68,16 +75,36 @@ const Card2 = ({item, navigation}) => {
               fontSize: 12,
               textAlign: 'justify',
               color: theme.colors.text,
+              fontFamily: font.italic,
             }}>
             {renderTitle(overview)}
           </Text>
-          <Text style={{color: theme.colors.text, fontFamily: font.oregular}}>
-            Attention-{vote_count}
-          </Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Icon name="fire" type="simple-line-icon" color="orange" />
+            <Text style={{color: theme.colors.text, fontFamily: font.oregular}}>
+              Attention {vote_count}
+            </Text>
+          </View>
           <Text style={{color: theme.colors.text, fontFamily: font.oregular}}>
             Release-Date-{release_date}
           </Text>
-          <Text style={{color: 'orange'}}>Rating-{vote_average}</Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <AirbnbRating
+              count={5}
+              showRating={false}
+              defaultRating={vote_average / 2}
+              size={20}
+            />
+            <Text
+              style={{
+                color: 'orange',
+                fontSize: 22,
+                marginLeft: 10,
+                fontFamily: font.medium,
+              }}>
+              {vote_average}
+            </Text>
+          </View>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -91,6 +118,7 @@ const styles = StyleSheet.create({
     margin: 5,
     width: width * 0.95,
     alignContent: 'center',
+    marginTop: 15,
   },
 });
 

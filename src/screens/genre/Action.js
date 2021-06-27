@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View, ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
 import {Card2, Loading} from '../../components';
 import getColorTheme from '../../helpers/Theme';
@@ -29,7 +29,9 @@ const Action = ({action, fetchAction, navigation}) => {
         keyExtractor={(_, index) => index.toString()}
         onEndReached={getData}
         onEndReachedThreshold={0.5}
-        ListFooterComponent={action && <Loading />}
+        ListFooterComponent={
+          action && <ActivityIndicator size="large" color={theme.colors.text} />
+        }
       />
     </View>
   );

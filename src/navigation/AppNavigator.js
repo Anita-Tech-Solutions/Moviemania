@@ -7,6 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import Splash from '../screens/Splash';
 import Welcome from '../screens/Welcome';
 import MainNavigator from './MainNavigator';
+import {Loading} from '../components';
 
 const Stack = createStackNavigator();
 
@@ -30,7 +31,7 @@ export default function AppNavigator() {
   };
 
   return (
-    <NavigationContainer linking={linking} fallback={<Text>Loading</Text>}>
+    <NavigationContainer linking={linking} fallback={<Loading />}>
       <Stack.Navigator headerMode="none" initialRouteName="Home">
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Welcome" component={Welcome} />

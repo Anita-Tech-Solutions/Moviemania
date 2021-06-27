@@ -1,19 +1,17 @@
 import React, {memo, useEffect, useState} from 'react';
-import {FlatList, StyleSheet, Text, TextInput, View} from 'react-native';
-import {Icon} from 'react-native-elements';
+import {FlatList, StyleSheet, TextInput, View, Text} from 'react-native';
+import {Icon, SearchBar} from 'react-native-elements';
 
 import {Card2} from '../components';
 
 //redux
 import {searchMovie} from '../redux/actions/movieAction';
 import {connect} from 'react-redux';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import getColorTheme from '../helpers/Theme';
 
 const Search = ({searchMovie, search, navigation}) => {
+  const [value, setValue] = useState('');
   const theme = getColorTheme();
-  const [query, setQuery] = useState('');
-  const [num, setNum] = useState(0);
 
   useEffect(() => {
     //searchMovie('');
@@ -22,20 +20,42 @@ const Search = ({searchMovie, search, navigation}) => {
   return (
     <View
       style={[styles.container, {backgroundColor: theme.colors.background}]}>
-      <View style={styles.search}>
-        <Icon name="search" />
-        <TextInput
-          placeholder="Type movie name here"
-          placeholderTextColor={theme.colors.text}
-          onSubmitEditing={(event) => searchMovie(event.nativeEvent.text)}
-        />
-      </View>
+      <SearchBar
+        round
+        showCancel={true}
+        placeholder="Search Movie title here..."
+        autoCapitalize="none"
+        placeholderTextColor={theme.colors.text}
+        containerStyle={{
+          backgroundColor: theme.colors.background,
+          borderTopColor: theme.colors.background,
+          borderBottomColor: theme.colors.background,
+        }}
+        inputContainerStyle={{
+          backgroundColor: theme.colors.background,
+          borderWidth: 1,
+          borderBottomWidth: 1,
+          borderColor: theme.colors.text,
+        }}
+        inputStyle={{
+          color: theme.colors.text,
+        }}
+        value={value}
+        onChangeText={(text) => setValue(text)}
+        onSubmitEditing={(event) => searchMovie(event.nativeEvent.text)}
+      />
       <FlatList
         data={search}
         renderItem={({item, index}) => (
           <Card2 item={item} key={index} navigation={navigation} />
         )}
         keyExtractor={(_, index) => index.toString()}
+        ListEmptyComponent={
+          <View
+            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Text style={{color: theme.colors.text}}>0 Movies found</Text>
+          </View>
+        }
       />
     </View>
   );

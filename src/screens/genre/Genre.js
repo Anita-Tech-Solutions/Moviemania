@@ -9,7 +9,7 @@ import Love from './Love';
 import {connect} from 'react-redux';
 
 import {fetchMovielist} from '../../redux/actions/movieAction';
-import {Dimensions, Text, View, StyleSheet, TextInput} from 'react-native';
+import {Dimensions, Text, View, StyleSheet, TextInput,ActivityIndicator} from 'react-native';
 
 import {Button, Icon} from 'react-native-elements';
 import {Header} from '../../components';

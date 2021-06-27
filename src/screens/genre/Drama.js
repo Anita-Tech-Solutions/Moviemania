@@ -1,5 +1,5 @@
 import React, {memo, useEffect, useState} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View,ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
 import {Card2, Loading} from '../../components';
 import getColorTheme from '../../helpers/Theme';
@@ -29,7 +29,9 @@ const Drama = ({drama, fetchDrama, navigation}) => {
         keyExtractor={(_, index) => index.toString()}
         onEndReached={getData}
         onEndReachedThreshold={0.5}
-        ListFooterComponent={drama && <Loading />}
+        ListFooterComponent={
+          drama && <ActivityIndicator size="large" color={theme.colors.text} />
+        }
       />
     </View>
   );

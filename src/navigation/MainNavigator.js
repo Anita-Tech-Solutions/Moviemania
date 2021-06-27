@@ -40,7 +40,7 @@ function HomeStack() {
 
 function DiscoverStack() {
   return (
-    <Stack.Navigator headerMode="none">
+    <Stack.Navigator headerMode="none"  >
       <Stack.Screen name="Discover" component={Genre} />
       <Stack.Screen name="Search" component={Search} />
       <Stack.Screen name="Detail" component={MovieDetail} />

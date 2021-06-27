@@ -6,9 +6,12 @@ import {
   View,
   ScrollView,
   FlatList,
+  TouchableOpacity,
+  Alert,
+  ActivityIndicator,
 } from 'react-native';
 
-import {Avatar, Icon} from 'react-native-elements';
+import {AirbnbRating, Avatar, Icon} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {font, poster} from '../constants';
 import {Card, Card3, Loading} from '../components';
@@ -53,7 +56,7 @@ const MovieDetail = ({
     fetchVideo(id);
   }, []);
 
-  const {title, backdrop_path, overview, genres} = detail;
+  const {title, backdrop_path, overview, genres, vote_average} = detail;
 
   if (detail.length === 0) {
     return <Loading />;
@@ -61,20 +64,37 @@ const MovieDetail = ({
 
   return (
     <ScrollView
-      contentContainerStyle={{backgroundColor: theme.colors.background}}>
+      bounces={false}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{
+        backgroundColor: theme.colors.background,
+      }}>
       <FastImage
         source={{uri: poster + backdrop_path}}
-        onProgress={(e) =>
-          console.log(e.nativeEvent.loaded / e.nativeEvent.total)
-        }
+        onLoadStart={() => <ActivityIndicator size="large" color="red" />}
         resizeMode="cover"
         style={{
           width,
           height: 250,
           borderRadius: 5,
-          backgroundColor: 'red',
         }}
       />
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={{
+          backgroundColor: '#f3f3f3',
+          marginLeft: 10,
+          width: 30,
+          height: 30,
+          borderRadius: 30,
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'absolute',
+          top: 15,
+          left: 10,
+        }}>
+        <Icon name="left" type="antdesign" size={20} />
+      </TouchableOpacity>
       <View style={styles.section}>
         <Text
           style={{
@@ -86,11 +106,13 @@ const MovieDetail = ({
         </Text>
         <View style={styles.section}>
           <Icon name="fire" type="fontisto" color="orange" />
-          <Text style={{color: theme.colors.text, fontFamily: font.obold}}>
-            Attention
-          </Text>
-          <Text style={{color: theme.colors.text, fontFamily: font.oregular}}>
-            {vote_count}
+          <Text
+            style={{
+              color: theme.colors.text,
+              fontFamily: font.obold,
+              marginLeft: 10,
+            }}>
+            Attention {vote_count}
           </Text>
         </View>
       </View>
@@ -99,14 +121,14 @@ const MovieDetail = ({
           <View
             key={index}
             style={{
-              margin: 5,
-              backgroundColor: 'orange',
-              padding: 10,
+              margin: 10,
+              backgroundColor: 'lightpink',
+              padding: 7,
               borderRadius: 15,
             }}>
             <Text
               style={{
-                fontSize: 18,
+                fontSize: 15,
                 color: theme.colors.text,
                 fontFamily: font.obold,
               }}>
@@ -115,6 +137,24 @@ const MovieDetail = ({
           </View>
         ))}
       </ScrollView>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'space-around',
+          flexDirection: 'row',
+          alignItems: 'center',
+          margin: 10,
+        }}>
+        <AirbnbRating
+          count={5}
+          showRating={false}
+          defaultRating={vote_average / 2}
+          size={30}
+        />
+        <Text style={{fontSize: 25, fontFamily: font.obold, color: 'orange'}}>
+          {vote_average}
+        </Text>
+      </View>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -145,18 +185,19 @@ const MovieDetail = ({
             return;
           }
           return (
-            <Avatar
-              size={100}
-              source={{uri: poster + item.profile_path}}
-              containerStyle={{margin: 5}}
-              ImageComponent={FastImage}
-              avatarStyle={{
-                width: '100%',
-                borderRadius: 10,
-              }}
-              imageProps={{resizeMode: 'cover'}}
-              onPress={() => navigation.navigate('Castdetail', {id: item.id})}
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Castdetail', {id: item.id})}>
+              <FastImage
+                source={{uri: poster + item.profile_path}}
+                resizeMode="contain"
+                style={{
+                  width: 110,
+                  height: 160,
+                  margin: 10,
+                  borderRadius: 15,
+                }}
+              />
+            </TouchableOpacity>
           );
         }}
       />
@@ -170,7 +211,9 @@ const MovieDetail = ({
           }}>
           Movie introduction
         </Text>
-        <Text style={{color: theme.colors.text}}>{overview}</Text>
+        <Text style={{color: theme.colors.text, fontFamily: font.italic}}>
+          {overview}
+        </Text>
       </View>
       <View style={{padding: 10}}>
         <Text

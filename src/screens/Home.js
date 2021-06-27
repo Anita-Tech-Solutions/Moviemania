@@ -34,6 +34,7 @@ const Home = ({
 
   return (
     <ScrollView
+      bounces={false}
       style={{flex: 1}}
       contentContainerStyle={{backgroundColor: theme.colors.background}}>
       <Header navigation={navigation} />

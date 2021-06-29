@@ -1,4 +1,9 @@
-import {FETCH_TV_POPULAR, FETCH_TV_TOPRATED, SEARCH_TV} from './types';
+import {
+  FETCH_TV_POPULAR,
+  FETCH_TV_TOPRATED,
+  SEARCH_TV,
+  TV_DETAIL,
+} from './types';
 
 import moviemania from '../../api';
 
@@ -20,6 +25,15 @@ const fetchTvToprated = () => async (dispatch) => {
   }
 };
 
+const tvDetail = (id) => async (dispatch) => {
+  try {
+    const response = await moviemania.get(`tv/${id}`);
+    dispatch({type: TV_DETAIL, payload: response.data});
+  } catch (error) {
+    throw error;
+  }
+};
+
 const searchTv = (query) => async (dispatch) => {
   try {
     const response = await moviemania.get('search/tv', {
@@ -34,4 +48,4 @@ const searchTv = (query) => async (dispatch) => {
   }
 };
 
-export {fetchTvPopular, fetchTvToprated, searchTv};
+export {fetchTvPopular, fetchTvToprated, searchTv, tvDetail};

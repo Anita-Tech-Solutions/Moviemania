@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Moviemania</string>
+    <string name="facebook_app_id">327582588897753</string>
+    <string name="fb_login_protocol_scheme">fb327582588897753</string>
 </resources>

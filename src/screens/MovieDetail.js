@@ -9,9 +9,10 @@ import {
   TouchableOpacity,
   Alert,
   ActivityIndicator,
+  Share,
 } from 'react-native';
 
-import {AirbnbRating, Avatar, Icon} from 'react-native-elements';
+import {AirbnbRating, Icon} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {font, poster} from '../constants';
 import {Card, Card3, Loading} from '../components';
@@ -27,10 +28,15 @@ import {
 } from '../redux/actions/movieInfoAction';
 import getColorTheme from '../helpers/Theme';
 
+import {ShareApi} from 'react-native-fbsdk';
+
+import {CommonActions} from '@react-navigation/native';
+
 const {width} = Dimensions.get('window');
 
 const MovieDetail = ({
   navigation,
+  index,
   route,
   detail,
   cast,
@@ -45,8 +51,8 @@ const MovieDetail = ({
   fetchVideo,
 }) => {
   const theme = getColorTheme();
-
-  const {id, vote_count} = route.params;
+  const {id} = route.params;
+  // console.log('movie id.....  ', id);
   useEffect(() => {
     fetchDetail(id);
     fetchCast(id);
@@ -56,11 +62,71 @@ const MovieDetail = ({
     fetchVideo(id);
   }, []);
 
-  const {title, backdrop_path, overview, genres, vote_average} = detail;
+  const {title, backdrop_path, overview, genres, vote_average, vote_count} =
+    detail;
 
   if (detail.length === 0) {
     return <Loading />;
   }
+
+  const onShare = async () => {
+    try {
+      // const result = await Share.share(
+      //   {
+      //     message:
+      //       'React Native | A framework for building native apps using React',
+      //     url: 'https://www.google.com',
+      //     title: 'Share item title',
+      //   },
+      //   {
+      //     excludedActivityTypes: ['com.Moviemania'],
+      //     dialogTitle: 'Moviemania',
+      //     tintColor: 'red',
+      //   },
+      // );
+      // if (result.action === Share.sharedAction) {
+      //   if (result.activityType) {
+      //     // shared with activity type of result.activityType
+      //   } else {
+      //     // shared
+      //   }
+      // } else if (result.action === Share.dismissedAction) {
+      //   // dismissed
+      // }
+      const shareLinkContent = {
+        contentType: 'link',
+        contentUrl: 'https://facebook.com',
+        contentDescription: 'Wow, check out this great site!',
+      };
+      ShareApi.canShare(shareLinkContent)
+        .then(function (canShare) {
+          if (canShare) {
+            return ShareApi.share(shareLinkContent, '/me', 'Some message.');
+          }
+        })
+        .then(
+          function (result) {
+            console.log('Share with ShareApi success.');
+          },
+          function (error) {
+            console.log('Share with ShareApi failed with error: ' + error);
+          },
+        );
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const goBack = () => {
+    navigation.dispatch((state) => {
+      const routes = state.routes;
+      return CommonActions.reset({
+        index: 1,
+        routes,
+        ...CommonActions.goBack(),
+      });
+    });
+  };
 
   return (
     <ScrollView
@@ -80,7 +146,7 @@ const MovieDetail = ({
         }}
       />
       <TouchableOpacity
-        onPress={() => navigation.goBack()}
+        onPress={goBack}
         style={{
           backgroundColor: '#f3f3f3',
           marginLeft: 10,
@@ -115,6 +181,12 @@ const MovieDetail = ({
             Attention {vote_count}
           </Text>
         </View>
+        <Icon
+          name="share"
+          type="font-awesome"
+          color={theme.colors.text}
+          onPress={onShare}
+        />
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {genres.map(({name}, index) => (

@@ -13,6 +13,7 @@
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
 #import <Firebase.h>
 #import <React/RCTLinkingManager.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
@@ -27,12 +28,21 @@ static void InitializeFlipper(UIApplication *application) {
 
 @implementation AppDelegate
 
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [FBSDKAppEvents activateApp];
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   
   if ([FIRApp defaultApp] == nil) {
       [FIRApp configure];
     }
+  
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
   
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
@@ -63,6 +73,18 @@ static void InitializeFlipper(UIApplication *application) {
 }
 
 
+//facebook login sdk
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                         openURL:url
+                                               sourceApplication:sourceApplication
+                                                      annotation:annotation];
+}
+
 
 // Add this above `@end`:
 - (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity
@@ -80,6 +102,9 @@ static void InitializeFlipper(UIApplication *application) {
 {
   return [RCTLinkingManager application:application openURL:url options:options];
 }
+
+
+
 
 
 @end

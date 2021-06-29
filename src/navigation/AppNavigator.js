@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
@@ -21,9 +21,19 @@ export default function AppNavigator() {
         Home: {
           path: 'home',
           screens: {
-            Discover: 'discoverscreen',
-            Cast: 'castingscreen',
-            Settings: 'settingscreen',
+            Home: {
+              screens: {
+                Detail: 'detail/:id',
+              },
+            },
+            Discover: {
+              path: 'discover',
+              screens: {
+                Detail: 'detail/:id',
+              },
+            },
+            Cast: 'casts',
+            Settings: 'settings',
           },
         },
       },

@@ -11,7 +11,7 @@ const initial_state = {};
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['theme'],
+  blacklist: ['navigation'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer); // create a persisted reducer

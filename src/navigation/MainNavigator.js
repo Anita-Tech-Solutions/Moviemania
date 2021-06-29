@@ -7,7 +7,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Cast from '../screens/Cast';
-import Tv from '../screens/Tv';
+import Tv from '../screens/tv/Tv';
 import Settings from '../screens/settings/Settings';
 
 const Bottom = createBottomTabNavigator();
@@ -22,7 +22,7 @@ import Trending from '../screens/Trending';
 import Upcoming from '../screens/Upcoming';
 import Toprated from '../screens/Toprated';
 import CastDetail from '../screens/CastDetail';
-import TvDetail from '../screens/TvDetail';
+import TvDetail from '../screens/tv/TvDetail';
 
 function HomeStack() {
   return (
@@ -32,7 +32,9 @@ function HomeStack() {
       <Stack.Screen name="Trending" component={Trending} />
       <Stack.Screen name="Upcoming" component={Upcoming} />
       <Stack.Screen name="Top Rated" component={Toprated} />
-      <Stack.Screen name="Detail" component={MovieDetail} />
+      <Stack.Screen name="Detail" component={MovieDetail} options={{
+        
+      }} />
       <Stack.Screen name="Castdetail" component={CastDetail} />
     </Stack.Navigator>
   );

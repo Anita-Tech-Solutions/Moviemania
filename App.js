@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StatusBar, View} from 'react-native';
+import {StatusBar, View, LogBox} from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -49,6 +49,8 @@ import messaging from '@react-native-firebase/messaging';
 // OneSignal.setNotificationOpenedHandler((notification) => {
 //   console.log('OneSignal: notification opened:', notification);
 // });
+
+LogBox.ignoreAllLogs(true);
 
 const Status = () => {
   const insets = useSafeAreaInsets();

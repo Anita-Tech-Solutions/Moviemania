@@ -1,6 +1,5 @@
 import React from 'react';
-import {Dimensions, View} from 'react-native';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import {Dimensions} from 'react-native';
 
 import getColorTheme from '../helpers/Theme';
 

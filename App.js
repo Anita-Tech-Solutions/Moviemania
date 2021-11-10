@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StatusBar, View, LogBox} from 'react-native';
+import {StatusBar, View, LogBox, Alert} from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -14,8 +14,8 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {theme} from './src/constants';
 import {ThemeProvider} from 'react-native-elements';
 import getColorTheme from './src/helpers/Theme';
-
 import messaging from '@react-native-firebase/messaging';
+import {remoteNotification} from './src/services/notification';
 
 // import OneSignal from 'react-native-onesignal';
 
@@ -70,12 +70,11 @@ const Status = () => {
 
 const App = () => {
   useEffect(() => {
-    // Get the device token
-    messaging()
-      .getToken()
-      .then((token) => {
-        // console.log(token);
-      });
+    const unsubscribe = messaging().onMessage(async (data) => {
+      remoteNotification(data);
+    });
+
+    return unsubscribe;
   }, []);
 
   return (

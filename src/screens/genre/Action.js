@@ -20,20 +20,20 @@ const Action = ({action, fetchAction, navigation}) => {
   };
 
   return (
-    <View style={{backgroundColor: theme.colors.background}}>
-      <FlatList
-        data={action}
-        renderItem={({item, index}) => {
-          return <Card2 item={item} key={index} navigation={navigation} />;
-        }}
-        keyExtractor={(_, index) => index.toString()}
-        onEndReached={getData}
-        onEndReachedThreshold={0.5}
-        ListFooterComponent={
-          action && <ActivityIndicator size="large" color={theme.colors.text} />
-        }
-      />
-    </View>
+    <FlatList
+      contentContainerStyle={{backgroundColor: theme.colors.background}}
+      scrollEventThrottle={1}
+      data={action}
+      renderItem={({item, index}) => {
+        return <Card2 item={item} key={index} navigation={navigation} />;
+      }}
+      keyExtractor={(_, index) => index.toString()}
+      onEndReached={getData}
+      onEndReachedThreshold={0.5}
+      ListFooterComponent={
+        action && <ActivityIndicator size="large" color={theme.colors.text} />
+      }
+    />
   );
 };
 

@@ -36,7 +36,6 @@ const {width} = Dimensions.get('window');
 
 const MovieDetail = ({
   navigation,
-  index,
   route,
   detail,
   cast,
@@ -69,54 +68,6 @@ const MovieDetail = ({
     return <Loading />;
   }
 
-  const onShare = async () => {
-    try {
-      // const result = await Share.share(
-      //   {
-      //     message:
-      //       'React Native | A framework for building native apps using React',
-      //     url: 'https://www.google.com',
-      //     title: 'Share item title',
-      //   },
-      //   {
-      //     excludedActivityTypes: ['com.Moviemania'],
-      //     dialogTitle: 'Moviemania',
-      //     tintColor: 'red',
-      //   },
-      // );
-      // if (result.action === Share.sharedAction) {
-      //   if (result.activityType) {
-      //     // shared with activity type of result.activityType
-      //   } else {
-      //     // shared
-      //   }
-      // } else if (result.action === Share.dismissedAction) {
-      //   // dismissed
-      // }
-      const shareLinkContent = {
-        contentType: 'link',
-        contentUrl: 'https://facebook.com',
-        contentDescription: 'Wow, check out this great site!',
-      };
-      ShareApi.canShare(shareLinkContent)
-        .then(function (canShare) {
-          if (canShare) {
-            return ShareApi.share(shareLinkContent, '/me', 'Some message.');
-          }
-        })
-        .then(
-          function (result) {
-            console.log('Share with ShareApi success.');
-          },
-          function (error) {
-            console.log('Share with ShareApi failed with error: ' + error);
-          },
-        );
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
   const goBack = () => {
     navigation.dispatch((state) => {
       const routes = state.routes;
@@ -130,6 +81,8 @@ const MovieDetail = ({
 
   return (
     <ScrollView
+      nestedScrollEnabled
+      scrollEventThrottle={1}
       bounces={false}
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{
@@ -181,12 +134,7 @@ const MovieDetail = ({
             Attention {vote_count}
           </Text>
         </View>
-        <Icon
-          name="share"
-          type="font-awesome"
-          color={theme.colors.text}
-          onPress={onShare}
-        />
+        <Icon name="share" type="font-awesome" color={theme.colors.text} />
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {genres.map(({name}, index) => (
@@ -228,11 +176,12 @@ const MovieDetail = ({
         </Text>
       </View>
       <FlatList
+        scrollEventThrottle={1}
         horizontal
         showsHorizontalScrollIndicator={false}
         data={images}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({item, index}) => {
+        renderItem={({item}) => {
           return (
             <>
               <Text
@@ -252,7 +201,7 @@ const MovieDetail = ({
         horizontal
         showsHorizontalScrollIndicator={false}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({item, index}) => {
+        renderItem={({item}) => {
           if (!item.profile_path) {
             return;
           }
@@ -322,7 +271,7 @@ const MovieDetail = ({
           ListEmptyComponent={
             <Text style={{fontSize: 25, color: 'red'}}>Empty</Text>
           }
-          renderItem={({item, index}) => {
+          renderItem={({item}) => {
             return (
               <View style={{flex: 1, width}}>
                 <WebView

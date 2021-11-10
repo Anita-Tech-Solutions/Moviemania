@@ -23,6 +23,8 @@ import Upcoming from '../screens/Upcoming';
 import Toprated from '../screens/Toprated';
 import CastDetail from '../screens/CastDetail';
 import TvDetail from '../screens/tv/TvDetail';
+import Login from '../screens/Login';
+import Account from '../screens/account/Account';
 
 function HomeStack() {
   return (
@@ -32,9 +34,7 @@ function HomeStack() {
       <Stack.Screen name="Trending" component={Trending} />
       <Stack.Screen name="Upcoming" component={Upcoming} />
       <Stack.Screen name="Top Rated" component={Toprated} />
-      <Stack.Screen name="Detail" component={MovieDetail} options={{
-        
-      }} />
+      <Stack.Screen name="Detail" component={MovieDetail} options={{}} />
       <Stack.Screen name="Castdetail" component={CastDetail} />
     </Stack.Navigator>
   );
@@ -42,7 +42,7 @@ function HomeStack() {
 
 function DiscoverStack() {
   return (
-    <Stack.Navigator headerMode="none"  >
+    <Stack.Navigator headerMode="none">
       <Stack.Screen name="Discover" component={Genre} />
       <Stack.Screen name="Search" component={Search} />
       <Stack.Screen name="Detail" component={MovieDetail} />
@@ -60,6 +60,16 @@ function TvStack() {
   );
 }
 
+function SettingStack() {
+  return (
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="Setting" component={Settings} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Account" component={Account} />
+    </Stack.Navigator>
+  );
+}
+
 export default function MainNavigator() {
   return (
     <Bottom.Navigator
@@ -68,7 +78,7 @@ export default function MainNavigator() {
       <Bottom.Screen name="Home" component={HomeStack} />
       <Bottom.Screen name="Discover" component={DiscoverStack} />
       <Bottom.Screen name="Cast" component={TvStack} />
-      <Bottom.Screen name="Settings" component={Settings} />
+      <Bottom.Screen name="Settings" component={SettingStack} />
     </Bottom.Navigator>
   );
 }

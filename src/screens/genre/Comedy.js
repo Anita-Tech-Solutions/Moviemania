@@ -11,8 +11,8 @@ const Comedy = ({comedy, fetchComedy, loading, navigation}) => {
   const [offset, setOffset] = useState(1);
 
   useEffect(() => {
-    fetchComedy(offset);
-  }, []);
+    fetchComedy(offset + 1);
+  }, [offset]);
 
   const getData = () => {
     setOffset(offset + 1);
@@ -20,20 +20,19 @@ const Comedy = ({comedy, fetchComedy, loading, navigation}) => {
   };
 
   return (
-    <View style={{backgroundColor: theme.colors.background}}>
-      <FlatList
-        data={comedy}
-        renderItem={({item, index}) => {
-          return <Card2 item={item} key={index} navigation={navigation} />;
-        }}
-        keyExtractor={(_, index) => index.toString()}
-        onEndReached={getData}
-        onEndReachedThreshold={0.5}
-        ListFooterComponent={
-          comedy && <ActivityIndicator size="large" color={theme.colors.text} />
-        }
-      />
-    </View>
+    <FlatList
+      contentContainerStyle={{backgroundColor: theme.colors.background}}
+      data={comedy}
+      renderItem={({item, index}) => {
+        return <Card2 item={item} key={index} navigation={navigation} />;
+      }}
+      keyExtractor={(_, index) => index.toString()}
+      onEndReached={getData}
+      onEndReachedThreshold={0.5}
+      ListFooterComponent={
+        comedy && <ActivityIndicator size="large" color={theme.colors.text} />
+      }
+    />
   );
 };
 

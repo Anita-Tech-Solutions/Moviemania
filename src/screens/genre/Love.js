@@ -11,8 +11,8 @@ const Love = ({love, fetchLove, navigation}) => {
   const [offset, setOffset] = useState(1);
 
   useEffect(() => {
-    fetchLove();
-  }, []);
+    fetchLove(offset + 1);
+  }, [offset]);
 
   const getData = () => {
     setOffset(offset + 1);
@@ -20,20 +20,19 @@ const Love = ({love, fetchLove, navigation}) => {
   };
 
   return (
-    <View style={{backgroundColor: theme.colors.background}}>
-      <FlatList
-        data={love}
-        renderItem={({item, index}) => {
-          return <Card2 item={item} key={index} navigation={navigation} />;
-        }}
-        keyExtractor={(_, index) => index.toString()}
-        onEndReached={getData}
-        onEndReachedThreshold={0.5}
-        ListFooterComponent={
-          love && <ActivityIndicator size="large" color={theme.colors.text} />
-        }
-      />
-    </View>
+    <FlatList
+      contentContainerStyle={{backgroundColor: theme.colors.background}}
+      data={love}
+      renderItem={({item, index}) => {
+        return <Card2 item={item} key={index} navigation={navigation} />;
+      }}
+      keyExtractor={(_, index) => index.toString()}
+      onEndReached={getData}
+      onEndReachedThreshold={0.5}
+      ListFooterComponent={
+        love && <ActivityIndicator size="large" color={theme.colors.text} />
+      }
+    />
   );
 };
 

@@ -12,7 +12,7 @@ const All = ({discover, fetchDiscover, navigation}) => {
 
   useEffect(() => {
     fetchDiscover(offset);
-  }, []);
+  }, [offset]);
 
   const getData = () => {
     setOffset(offset + 1);
@@ -20,22 +20,20 @@ const All = ({discover, fetchDiscover, navigation}) => {
   };
 
   return (
-    <View style={{backgroundColor: theme.colors.background}}>
-      <FlatList
-        data={discover}
-        renderItem={({item, index}) => {
-          return <Card2 item={item} key={index} navigation={navigation} />;
-        }}
-        keyExtractor={(_, index) => index.toString()}
-        onEndReached={getData}
-        onEndReachedThreshold={0.5}
-        ListFooterComponent={
-          discover && (
-            <ActivityIndicator size="large" color={theme.colors.text} />
-          )
-        }
-      />
-    </View>
+    <FlatList
+      contentContainerStyle={{backgroundColor: theme.colors.background}}
+      scrollEventThrottle={1}
+      data={discover}
+      renderItem={({item, index}) => {
+        return <Card2 item={item} key={index} navigation={navigation} />;
+      }}
+      keyExtractor={(_, index) => index.toString()}
+      onEndReached={getData}
+      onEndReachedThreshold={0.5}
+      ListFooterComponent={
+        discover && <ActivityIndicator size="large" color={theme.colors.text} />
+      }
+    />
   );
 };
 

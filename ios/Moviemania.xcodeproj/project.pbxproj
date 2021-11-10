@@ -16,6 +16,7 @@
 		272CDF3E2683501D00A95409 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 272CDF372683501D00A95409 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		272CDF4B2683608400A95409 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 272CDF4A2683608400A95409 /* libPods-OneSignalNotificationServiceExtension.a */; };
 		2770F1342688EA8600336EA8 /* libswiftWebKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2770F1332688EA8600336EA8 /* libswiftWebKit.tbd */; };
+		27DBB34E26AAD35300D8928E /* notification.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27DBB34D26AAD35200D8928E /* notification.mp3 */; };
 		27F54B5526863D5A00883110 /* Oxygen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5226863D5800883110 /* Oxygen-Bold.ttf */; };
 		27F54B5626863D5A00883110 /* Oxygen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5326863D5900883110 /* Oxygen-Regular.ttf */; };
 		27F54B5726863D5A00883110 /* Oxygen-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27F54B5426863D5900883110 /* Oxygen-Light.ttf */; };
@@ -100,6 +101,7 @@
 		272CDF462683605300A95409 /* OneSignal.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OneSignal.xcframework; path = Pods/OneSignalXCFramework/iOS_SDK/OneSignalSDK/OneSignal_XCFramework/OneSignal.xcframework; sourceTree = "<group>"; };
 		272CDF4A2683608400A95409 /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2770F1332688EA8600336EA8 /* libswiftWebKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftWebKit.tbd; path = usr/lib/swift/libswiftWebKit.tbd; sourceTree = SDKROOT; };
+		27DBB34D26AAD35200D8928E /* notification.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = notification.mp3; sourceTree = "<group>"; };
 		27F54B5226863D5800883110 /* Oxygen-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Bold.ttf"; sourceTree = "<group>"; };
 		27F54B5326863D5900883110 /* Oxygen-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Regular.ttf"; sourceTree = "<group>"; };
 		27F54B5426863D5900883110 /* Oxygen-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Light.ttf"; sourceTree = "<group>"; };
@@ -236,6 +238,8 @@
 		7259BF693A1740F195E4E272 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27DBB34D26AAD35200D8928E /* notification.mp3 */,
+				272CDF30268349AF00A95409 /* GoogleService-Info.plist */,
 				27F54B5C2686402400883110 /* Roboto-Black.ttf */,
 				27F54B5A2686402400883110 /* Roboto-Bold.ttf */,
 				27F54B5E2686402500883110 /* Roboto-Italic.ttf */,
@@ -260,7 +264,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				272CDF30268349AF00A95409 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* Moviemania */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MoviemaniaTests */,
@@ -489,6 +492,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				272CDF31268349AF00A95409 /* GoogleService-Info.plist in Resources */,
+				27DBB34E26AAD35300D8928E /* notification.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

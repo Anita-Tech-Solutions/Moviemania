@@ -4,6 +4,20 @@ export const SUCCESS = 'success';
 export const FAILED = 'failed';
 export const THEME = 'theme';
 
+//Authentication
+export const REQUEST_TOKEN = 'request_token';
+export const REQUEST_PERMISSION = 'request_permission';
+export const CREATE_SESSION = 'create_session';
+
+//User Details
+export const USER_LOADING='user_loading'
+export const USER_PROFILE = 'user_profile';
+export const USER_LIST = 'user_list';
+export const USER_FAVORITE = 'user_favorite';
+export const USER_RATED_MOVIE = 'user_rated_movie';
+export const USER_WATCHLIST = 'user_watchlist';
+
+//movies
 export const FETCH_MOVIE = 'fetch_movie';
 export const FETCH_TRENDING = 'fetch_trending';
 export const FETCH_UPCOMING = 'fetch_upcoming';

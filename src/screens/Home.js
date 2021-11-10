@@ -34,13 +34,16 @@ const Home = ({
 
   return (
     <ScrollView
+      scrollEventThrottle={1}
       bounces={false}
       style={{flex: 1}}
       contentContainerStyle={{backgroundColor: theme.colors.background}}>
       <Header navigation={navigation} />
+
       {/*Trending*/}
       <Title navigation={navigation}>Trending</Title>
       <FlatList
+        removeClippedSubviews
         data={trending}
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -54,6 +57,7 @@ const Home = ({
       {/*Upcoming*/}
       <Title navigation={navigation}>Upcoming</Title>
       <FlatList
+        removeClippedSubviews
         data={upcoming}
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -67,6 +71,7 @@ const Home = ({
       {/**Top Rated */}
       <Title navigation={navigation}>Top Rated</Title>
       <FlatList
+        removeClippedSubviews
         data={top_rated}
         horizontal
         showsHorizontalScrollIndicator={false}

@@ -6,16 +6,16 @@ import {
 } from 'react-native-safe-area-context';
 import {Provider, useSelector} from 'react-redux';
 
-import {store, persistor} from './src/redux';
+import {store, persistor} from './redux';
 
-import AppNavigator from './src/navigation/AppNavigator';
+import AppNavigator from './navigation/AppNavigator';
 import {PersistGate} from 'redux-persist/integration/react';
 
-import {theme} from './src/constants';
+import {theme} from './constants';
 import {ThemeProvider} from 'react-native-elements';
-import getColorTheme from './src/helpers/Theme';
+import getColorTheme from './helpers/Theme';
 import messaging from '@react-native-firebase/messaging';
-import {remoteNotification} from './src/services/notification';
+import {remoteNotification} from './services/notification';
 
 // import OneSignal from 'react-native-onesignal';
 
